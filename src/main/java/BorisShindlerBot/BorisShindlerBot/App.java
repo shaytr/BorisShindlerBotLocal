@@ -21,6 +21,5 @@ public class App
           } catch (TelegramApiException e) {
               e.printStackTrace();
           }
-        //System.out.println( "Hello World!" );
     }
 }

@@ -61,9 +61,6 @@ public class Actions {
 		actionsMap.put("арнона", Actions::arnona);
 		actionsMap.put("уличная канализация", Actions::suige);
 		actionsMap.put("электричество", Actions::electricity);
-		
-		
-
 	}
 	
 	public static Object getAction(String command, Message message) {

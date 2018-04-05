@@ -32,18 +32,6 @@ public class MyBot extends TelegramLongPollingBot {
 
 	@SuppressWarnings("unchecked")
 	public void onUpdateReceived(Update update) {
-//		    // We check if the update has a message and the message has text
-//		    if (update.hasMessage() && update.getMessage().hasText()) {
-//		        SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
-//		                .setChatId(update.getMessage().getChatId())
-//		                .setText(update.getMessage().getText());
-//		        try {
-//		            execute(message); // Call method to send the message
-//		        } catch (TelegramApiException e) {
-//		            e.printStackTrace();
-//		        }
-//		    }
-
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// Set variables
 			String message_text = update.getMessage().getText();
@@ -73,9 +61,6 @@ public class MyBot extends TelegramLongPollingBot {
 		}
 
 	}
-//	
-//	Main. –1 жилье, 2 транспорт, 3 учеба, 4 здоровье, 5 документы , 6-
-//	Разрешение на парковку
 
 	private void startAction(long chat_id) {
 		SendMessage message = new SendMessage() // Create a message object object
