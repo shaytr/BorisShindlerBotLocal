@@ -84,6 +84,7 @@ public class Actions {
 		Object getActionMessage(Message m);
 	}
 	
+	
 	static {
 		Utils.addAction("жилье", Actions::appartment, null, "главное меню", false);
 		/**/Utils.addAction("вода", Actions::water, null, "жилье", false);
