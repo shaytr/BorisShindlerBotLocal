@@ -1,15 +1,14 @@
 package BorisShindlerBot.BorisShindlerBot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 
 public class Actions {
+	
+	public final static String welcomeText = "Вас приветствует чат-бот удобного Тель-Авива от Бориса Шиндлера.\n" + 
+			"Получайте всю справочную информацию и справки от городских служб в\n" + 
+			"вашем Телеграме на вашем языке.";
 	
 	private final static String transportationText = 
 			"В Тель-Авиве развитая сеть общественного транспорта, представленная\n" + 
@@ -37,30 +36,30 @@ public class Actions {
 			"http://www.egged.co.il/ru/HomePage.aspx\n" + 
 			"https://www.rail.co.il/ru\n" + 
 			"https://bus.gov.il/#/origindestination/1/0";
-	
 	private final static String electricityText = "https://www.iec.co.il/pages/default.aspx" ;
-	
 	private final static String payBillText = "https://www.mybills.co.il/payments/147/%D7%90%D7%A8%D7%A0%D7%95%D7%A0%D7%94_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91.html";
-
 	private final static String arnonaText = "Арнона – это муниципальный налог, установленный правительством,\n" + 
 			"которым облагается владелец недвижимости или проживающий на\n" + 
 			"съемной квартире.";
+	private final static String arnonaChnangeAdressText = "https://www.tel-aviv.gov.il/Residents/Arnona/Pages/ArnonaSwitching.aspx";
 	
 	final static HashMap<String,Action> actionsMap = new HashMap<>();
+	final static HashMap<String,String> textsMap = new HashMap<>();
+	
 
 	public interface Action {
 		Object getActionMessage(Message m);
 	}
 	
 	static {
-		
-		actionsMap.put("жилье", Actions::appartment);
-		actionsMap.put("транспорт", Actions::transportation);
-		actionsMap.put("учеба", Actions::education);
-		actionsMap.put("вода", Actions::water);
-		actionsMap.put("арнона", Actions::arnona);
-		actionsMap.put("уличная канализация", Actions::suige);
-		actionsMap.put("электричество", Actions::electricity);
+		Utils.addAction(actionsMap, textsMap, "жилье", Actions::appartment, null);
+		Utils.addAction(actionsMap, textsMap, "транспорт", Actions::transportation, transportationText);
+		Utils.addAction(actionsMap, textsMap, "учеба", Actions::education, null);
+		Utils.addAction(actionsMap, textsMap, "вода", Actions::water, null);
+		Utils.addAction(actionsMap, textsMap, "арнона", Actions::arnona, arnonaText);
+		Utils.addAction(actionsMap, textsMap, "уличная канализация", Actions::suige, null);
+		Utils.addAction(actionsMap, textsMap, "электричество", Actions::electricity, electricityText);
+		Utils.addAction(actionsMap, textsMap, "изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText);
 	}
 	
 	public static Object getAction(String command, Message message) {
@@ -71,88 +70,56 @@ public class Actions {
 		return null;
 	}
 	
-	public static Object appartment(Message m) {
-		SendMessage message = new SendMessage() // Create a message object object
-				.setChatId(m.getChatId()).setText("жилье");
-		// Create ReplyKeyboardMarkup object
-		ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-		// Create the keyboard (list of keyboard rows)
-		List<KeyboardRow> keyboard = new ArrayList<>();
-		// Create a keyboard row
-		KeyboardRow row = new KeyboardRow();
-		// Set each button, you can also use KeyboardButton objects if you need
-		// something else than text
-		row.add("вода");
-		row.add("арнона");
-		row.add("мусор");
-		row.add("газ");
-		// Add the first row to the keyboard
-		keyboard.add(row);
-		//назад
-		row = new KeyboardRow();
-		row.add("уличная канализация");
-		row.add("комары");
-		row.add("электричество");
-		keyboard.add(row);
-		row = new KeyboardRow();
-		row.add("назад");
-		keyboard.add(row);
-		// Create another keyboard row
-		// Set the keyboard to the markup
-		keyboardMarkup.setKeyboard(keyboard);
-		// Add it to the message
-		message.setReplyMarkup(keyboardMarkup);
+	public static Object appartment(Message m) {	
+		String[][] rows = new String[][] {
+			{"вода","арнона","мусор","газ"},
+			{"уличная канализация","комары", "электричество"}
+		}; 
+		SendMessage message = Utils.createSendMessage(textsMap, m, "главное меню", rows);
 		return message;
 	}
+	
+	
 	public static Object transportation(Message m) {
-		SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
-                .setChatId(m.getChatId())
-                .setText(transportationText);
+		SendMessage message = Utils.createSendMessage(textsMap, m, null);
 		return message;
 	}
+	
 	public static Object electricity(Message m) {
-		SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
-                .setChatId(m.getChatId())
-                .setText(electricityText);
+		SendMessage message = Utils.createSendMessage(textsMap, m, null);
 		return message;
 	}
+	
 	public static Object education(Message m) {
 		return null;
 	}
+	
 	public static Object water(Message m) {
 		return null;
 	}
+	
 	public static Object arnona(Message m) {
-		SendMessage message = new SendMessage() // Create a message object object
-				.setChatId(m.getChatId()).setText(arnonaText);
-		// Create ReplyKeyboardMarkup object
-		ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-		// Create the keyboard (list of keyboard rows)
-		List<KeyboardRow> keyboard = new ArrayList<>();
-		// Create a keyboard row
-		KeyboardRow row = new KeyboardRow();
-		// Set each button, you can also use KeyboardButton objects if you need
-		// something else than text
-		row.add("изменить домашний адрес");
-		// Add the first row to the keyboard
-		keyboard.add(row);
-		//назад
-		row = new KeyboardRow();
-		row.add("оплатить");
-		row.add("льготы");
-		keyboard.add(row);
-		row = new KeyboardRow();
-		row.add("назад");
-		keyboard.add(row);
-		// Create another keyboard row
-		// Set the keyboard to the markup
-		keyboardMarkup.setKeyboard(keyboard);
-		// Add it to the message
-		message.setReplyMarkup(keyboardMarkup);
+		
+		String[][] rows = new String[][] {
+			{"изменить домашний адрес"},
+			{"оплатить","льготы"}
+		}; 
+		SendMessage message = Utils.createSendMessage(textsMap, m, "жилье", rows);
 		return message;
 	}
+	
 	public static Object suige(Message m) {
 		return null;
+	}
+	
+	public static Object arnonaChangeAdress(Message m) {
+		
+		String[][] rows = new String[][] {
+			{"получить форму на емэйл"},
+			{"показать форму на экране"}
+		}; 
+		SendMessage message = Utils.createSendMessage(textsMap, m, "арнона", rows);
+		return message;
 	}
 	
 }

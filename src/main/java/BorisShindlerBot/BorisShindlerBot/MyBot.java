@@ -1,23 +1,15 @@
 package BorisShindlerBot.BorisShindlerBot;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.telegram.telegrambots.api.methods.BotApiMethod;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-
-
 public class MyBot extends TelegramLongPollingBot {
-	private final String welcome = "Вас приветствует чат-бот удобного Тель-Авива от Бориса Шиндлера.\n" + 
-			"Получайте всю справочную информацию и справки от городских служб в\n" + 
-			"вашем Телеграме на вашем языке.";
+
 	
 	private final String token;
 
@@ -38,13 +30,9 @@ public class MyBot extends TelegramLongPollingBot {
 			long chat_id = update.getMessage().getChatId();
 			Object sendMessage;
 			if (message_text.equals("/start")) {
-				startAction(chat_id);
+				sendMessage = startAction(update.getMessage());
 			} else if (null != (sendMessage = Actions.getAction(message_text, update.getMessage()))) {
-				 try {
-			            execute((BotApiMethod) sendMessage); // Call method to send the message
-			        } catch (TelegramApiException e) {
-			            e.printStackTrace();
-			        }
+				
 			}
 			else if (message_text.equals("/pic")) {
 				// User sent /pic
@@ -56,45 +44,25 @@ public class MyBot extends TelegramLongPollingBot {
 					e.printStackTrace();
 				}
 			} else {
-				startAction(chat_id);
+				sendMessage = startAction(update.getMessage());
 			}
+			try {
+				execute((BotApiMethod) sendMessage); // Call method to send the message
+			} catch (TelegramApiException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 	}
 
-	private void startAction(long chat_id) {
-		SendMessage message = new SendMessage() // Create a message object object
-				.setChatId(chat_id).setText(welcome);
-		// Create ReplyKeyboardMarkup object
-		ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-		// Create the keyboard (list of keyboard rows)
-		List<KeyboardRow> keyboard = new ArrayList<>();
-		// Create a keyboard row
-		KeyboardRow row = new KeyboardRow();
-		// Set each button, you can also use KeyboardButton objects if you need
-		// something else than text
-		row.add("жилье");
-		row.add("транспорт");
-		row.add("учеба");
-		// Add the first row to the keyboard
-		keyboard.add(row);
-		// Create another keyboard row
-		row = new KeyboardRow();
-		// Set each button for the second line
-		row.add("здоровье");
-		row.add("документы");
-		row.add("Разрешение на парковку");
-		// Add the second row to the keyboard
-		keyboard.add(row);
-		// Set the keyboard to the markup
-		keyboardMarkup.setKeyboard(keyboard);
-		// Add it to the message
-		message.setReplyMarkup(keyboardMarkup);
-		try {
-			execute(message); // Call method to send the message
-		} catch (TelegramApiException e) {
-			e.printStackTrace();
-		}
+	private SendMessage startAction(Message m) {
+		String[][] rows = new String[][] {
+			{"жилье","транспорт","учеба"},
+			{"здоровье канализация","документы", "Разрешение на парковку"}
+		}; 
+		SendMessage message = Utils.createSendMessage(null, m, null, rows);
+		return message;
 	}
 
 	public String getBotUsername() {
