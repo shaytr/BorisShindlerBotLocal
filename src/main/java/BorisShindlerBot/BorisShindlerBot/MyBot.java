@@ -1,8 +1,8 @@
 package BorisShindlerBot.BorisShindlerBot;
 
 import org.telegram.telegrambots.api.methods.BotApiMethod;
+import org.telegram.telegrambots.api.methods.send.SendDocument;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -24,6 +24,12 @@ public class MyBot extends TelegramLongPollingBot {
 
 	@SuppressWarnings("unchecked")
 	public void onUpdateReceived(Update update) {
+		if (update.getMessage().getFrom().getBot()) {
+			// message sent by a bot.
+			System.err.println(update);
+			return;
+		}
+		System.out.println(update);
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// Set variables
 			String message_text = update.getMessage().getText();
@@ -33,21 +39,20 @@ public class MyBot extends TelegramLongPollingBot {
 				sendMessage = startAction(update.getMessage());
 			} else if (null != (sendMessage = Actions.getAction(message_text, update.getMessage()))) {
 				
+			} else if (message_text.contains("@")) {
+				sendMessage = Actions.getAction("@", update.getMessage());
 			}
-			else if (message_text.equals("/pic")) {
-				// User sent /pic
-				SendPhoto msg = new SendPhoto().setChatId(chat_id)
-						.setPhoto("AgADAgAD6qcxGwnPsUgOp7-MvnQ8GecvSw0ABGvTl7ObQNPNX7UEAAEC").setCaption("Photo");
-				try {
-					sendPhoto(msg); // Call method to send the photo
-				} catch (TelegramApiException e) {
-					e.printStackTrace();
-				}
-			} else {
+			else {
 				sendMessage = startAction(update.getMessage());
 			}
 			try {
-				execute((BotApiMethod) sendMessage); // Call method to send the message
+				if (sendMessage instanceof Object[]) {
+					for(Object m: (Object[])sendMessage) {
+						doSend(m);
+					}
+				} else {
+					doSend(sendMessage);
+				}
 			} catch (TelegramApiException e) {
 				e.printStackTrace();
 			}
@@ -56,17 +61,24 @@ public class MyBot extends TelegramLongPollingBot {
 
 	}
 
+	private void doSend(Object sendMessage) throws TelegramApiException {
+		if (sendMessage instanceof BotApiMethod) {
+			execute((BotApiMethod) sendMessage); // Call method to send the message
+		} else {
+			sendDocument((SendDocument)sendMessage);
+		}
+	}
+
 	private SendMessage startAction(Message m) {
 		String[][] rows = new String[][] {
 			{"жилье","транспорт","учеба"},
-			{"здоровье канализация","документы", "Разрешение на парковку"}
+			{"здоровье","документы", "Разрешение на парковку"}
 		}; 
-		SendMessage message = Utils.createSendMessage(null, m, null, rows);
+		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
 	}
 
 	public String getBotUsername() {
-		// TODO Auto-generated method stub
 		return "BorisShindlerBot";
 	}
 

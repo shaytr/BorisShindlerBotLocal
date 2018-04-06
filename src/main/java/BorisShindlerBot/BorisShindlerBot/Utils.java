@@ -19,19 +19,31 @@ public class Utils {
 		keyboard.add(row);
 	}
 	
-	public static void addAction(HashMap<String,Action> actionsMap, HashMap<String,String> textsMap, 
-			String command, Action action, String text) {
+	public static void addAction(String command, Action action, String text, String backCommand, boolean isEnd) {
 		final String actualText = text != null ? text : command; 
-		actionsMap.put(command, action);
-		actionsMap.put(BACK_WORD + " (" + command + ")", action);
-		textsMap.put(command, actualText);
-		textsMap.put(BACK_WORD + " (" + command + ")", actualText);
+		Actions.actionsMap.put(command, action);
+		Actions.actionsMap.put(BACK_WORD + " (" + command + ")", action);
+		Actions.textsMap.put(command, actualText);
+		Actions.textsMap.put(BACK_WORD + " (" + command + ")", actualText);
+		if (backCommand != null) {
+			Actions.backsMap.put(command, backCommand);
+			Actions.backsMap.put(BACK_WORD + " (" + command + ")", backCommand);
+		}
+		if(isEnd) {
+			Actions.isEndCommand.add(command);
+		}
 	}
 	
-	public static SendMessage createSendMessage(HashMap<String, String> textsMap, Message inMessage, String backButtonCommand, String[]... rowsText) {
-		String outText = textsMap != null ? textsMap.get(inMessage.getText()) : null;
+	public static SendMessage createSendMessage(Message inMessage, String[]... rowsText) {
+		
+		String inText = inMessage.getText();
+		if (inText.contains("@")) {
+			inText ="@";
+		}
+		String outText = Actions.textsMap.get(inText);;
 		if(outText == null) {
 			outText = Actions.welcomeText;
+		
 		}
 		SendMessage outMessage = new SendMessage()
 				.setChatId(inMessage.getChatId()).setText(outText);
@@ -41,12 +53,15 @@ public class Utils {
 			// Create the keyboard (list of keyboard rows)
 			List<KeyboardRow> keyboard = new ArrayList<>();
 			for (String[] rowButtonsText: rowsText) {
-				KeyboardRow row = new KeyboardRow();
-				for (String buttonText: rowButtonsText) {
-					row.add(buttonText);
-				}
-				keyboard.add(row);
+				addRow(keyboard, rowButtonsText);
 			}
+			if (Actions.isEndCommand.contains(inText)) {
+				for (String[] rowButtonsText: Actions.THE_END_MENU) {
+					addRow(keyboard, rowButtonsText);
+				}
+				outMessage.setText(outText + Actions.THE_END_TEXT);
+			}
+			String backButtonCommand = Actions.backsMap.get(inText);
 			if (backButtonCommand != null) {
 				Utils.addBackButton(keyboard, backButtonCommand);
 			}
@@ -56,5 +71,13 @@ public class Utils {
 			
 		}
 		return outMessage;
+	}
+
+	private static void addRow(List<KeyboardRow> keyboard, String[] rowButtonsText) {
+		KeyboardRow row = new KeyboardRow();
+		for (String buttonText: rowButtonsText) {
+			row.add(buttonText);
+		}
+		keyboard.add(row);
 	}
 }
