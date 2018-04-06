@@ -47,6 +47,7 @@ public class Utils {
 		}
 		SendMessage outMessage = new SendMessage()
 				.setChatId(inMessage.getChatId()).setText(outText);
+		outMessage.enableMarkdown(true);
 		if(rowsText != null) {
 			// Create ReplyKeyboardMarkup object
 			ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();

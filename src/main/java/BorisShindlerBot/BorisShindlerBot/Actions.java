@@ -9,28 +9,31 @@ import org.telegram.telegrambots.api.objects.Message;
 
 public class Actions {
 	public final static String welcomeText = "Вас приветствует чат-бот удобного Тель-Авива от Бориса Шиндлера.\n" + 
-			"Получайте всю справочную информацию и справки от городских служб в\n" + 
+			"Получайте всю справочную информацию и справки от городских служб в " + 
 			"вашем Телеграме на вашем языке.";
 		
 	private final static String transportationText = 
-			"В Тель-Авиве развитая сеть общественного транспорта, представленная\n" + 
-			"автобусами, микроавтобусами шерут и поездами. Самым комфортным и\n" + 
-			"быстрым видом транспорта являются поезда, самым дешевым – городские\n" + 
-			"автобусы и маршрутки шерут.\n" + 
-			"Проездной Rav Kav\n" + 
-			"Rav Kav – это персональная электронная карта, которую можно пополнить\n" + 
-			"нужным количеством поездок на ж/д станциях и использовать для поездок на\n" + 
+			"В Тель-Авиве развитая сеть общественного транспорта, представленная " + 
+			"автобусами, микроавтобусами шерут и поездами. Самым комфортным и " + 
+			"быстрым видом транспорта являются поезда, самым дешевым – городские " + 
+			"автобусы и маршрутки шерут.\n\n" + 
+			"*Проездной Rav Kav*\n" + 
+			"*Rav Kav* – это персональная электронная карта, которую можно пополнить " + 
+			"нужным количеством поездок на ж/д станциях и использовать для поездок на " + 
 			"поезде или автобусе на территории выбранного вами города Израиля.\n" + 
-			"Автобусные маршруты в Израиле обслуживают разные компании, поэтому,\n" + 
-			"если вы планируете поездки с разными автобусными перевозчиками, то\n" + 
-			"придется заплатить по отдельности за проезд в каждой компании и положить\n" + 
+			"*Автобусные маршруты* в Израиле обслуживают разные компании, поэтому, " + 
+			"если вы планируете поездки с разными автобусными перевозчиками, то " + 
+			"придется заплатить по отдельности за проезд в каждой компании и положить " + 
 			"эти средства на свою карту Rav Kav.\n" + 
-			"Цены на билеты на автобус в Тель-Авиве и ближайших городах\n" + 
-			"Тель-Авив и Центральный округ объединяются в агломерацию Гуш-Дан, в\n" + 
-			"которой действует единая система оплаты за проезд на автобусах\n" + 
-			"компаний Dan, Egged, Kavim ,Metropoline и поезда.";
-	private final static String electricityText = "https://www.iec.co.il/pages/default.aspx" ;
-	private final static String arnonaPayBillText = "https://www.mybills.co.il/payments/147/%D7%90%D7%A8%D7%A0%D7%95%D7%A0%D7%94_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91.html";
+			"*Цены* на билеты на автобус в Тель-Авиве и ближайших городах\n" + 
+			"Тель-Авив и Центральный округ объединяются в агломерацию Гуш-Дан, в " + 
+			"которой действует единая система оплаты за проезд на автобусах " + 
+			"компаний *Dan*, *Egged*, *Kavim* ,*Metropoline* и поезда.";
+	private final static String electricityText = "Электрическая компания Израиля (Производит, передает и распределяет практически всё электричество, используемое в стране. Государству Израиль принадлежит приблизительно 99,85 % Компании." +
+			"При любой проблеме с электричеством стоит обратиться в электро компанию по телефону 103 или он Лайн\n" +
+			"https://www.iec.co.il/pages/default.aspx" ;
+	private final static String electricityPayText = "https://www.iec.co.il/pages/billspayment.aspx";
+	private final static String arnonaPayBillText = "goo.gl/48zE6D";
 	private final static String arnonaDiscountText = "Кому положены скидки по арноне\n" + 
 			" \n" + 
 			"1. Новые репатрианты\n" + 
@@ -42,31 +45,62 @@ public class Actions {
 			"7. Пережившие Холокост, узники Сиона\n" + 
 			"8. Лица, получающие пособия по прожиточному минимуму\n" + 
 			" \n" + 
-			"В том случае, если владелец не пользуется квартирой, он  может получить\n" + 
-			"одноразовое освобождение от арноны (максимальный срок – 6 месяцев на одно\n" + 
+			"В том случае, если владелец не пользуется квартирой, он  может получить " + 
+			"одноразовое освобождение от арноны (максимальный срок – 6 месяцев на одно " + 
 			"помещение).\n" + 
 			" \n" + 
-			"Освобождение от уплаты налога могут получить те, кто предъявит документы о\n" + 
+			"Освобождение от уплаты налога могут получить те, кто предъявит документы о " + 
 			"капитальном ремонте жилого помещения (лишь на срок ремонта).\n" + 
 			" \n" + 
-			"Так же существуют различные скидки на оплату арноны по медицинским\n" + 
+			"Так же существуют различные скидки на оплату арноны по медицинским " + 
 			"показателям и экономическому положению.";
-	private final static String arnonaText = "Арнона – это муниципальный налог, установленный правительством,\n" + 
-			"которым облагается владелец недвижимости или проживающий на\n" + 
+	private final static String arnonaDiscountApealOnLineText = "Если вы новый репатриант, вам полагается 90% скидка на «арнону» в течение первого года после репатриации, на первые 100 метров вашей квартиры."
+			+ "\nhttps://www5.tel-aviv.gov.il/TlvForms/TlvArnonaDiscountRequest/";
+	private final static String arnonaText = "Арнона – это муниципальный налог, установленный правительством, " + 
+			"которым облагается владелец недвижимости или проживающий на " + 
 			"съемной квартире.";
-	private final static String arnonaChnangeAdressText = "https://www.tel-aviv.gov.il/Residents/Arnona/Pages/ArnonaSwitching.aspx";
-	private final static String parkingText = "Для того чтобы обеспечить жителей города бесплатной парковкой, местнось\n" + 
-			"разделена на различные зоны парковки. Существует официальное\n" + 
-			"разрешение на парковку в виде наклейки, которая должна быть прикреплена\n" + 
-			"к вашему лобовому стеклу. Жители оговоренной зоны могут припарковать\n" + 
-			"авто в любой области с синей и белой разметкой бесплатно. Нерезиденты\n" + 
-			"должны платить за парковку в с 9:00 до 17:00 вечера.";
+	private final static String arnonaChnangeAdressText = "Перевод «арноны» на ваше имя лучше всего делать вместе с предыдущим жильцом, тогда они выписывают ему квитанцию на оплату до даты начала вашего контракта, которую он может сразу же на месте оплатить. Паралельно, они переводят все будущие выплаты на ваше имя.\n" + 
+			"\n" + 
+			"Для того, чтобы точно определить адрес вашей квартиры в муниципалитете советую иметь при себе одну из предыдущих квитанций об оплате, на ней они смогут увидеть так называемый платежный номер вашей квартиры «миспар мешалем». Если у вас ее нет, не беспокойтесь, они смогут идентифицировать жилье по номеру «теудат зеута» его хозяина, который должен фигурировать на вашем договоре о съеме.";
+	private final static String arnonaChnangeAdressOnLineText =
+			"\nhttps://www.tel-aviv.gov.il/Residents/Arnona/Pages/ArnonaSwitching.aspx";
+	private final static String parkingText = "Для того чтобы обеспечить жителей города бесплатной парковкой, местнось " + 
+			"разделена на различные зоны парковки. Существует официальное " + 
+			"разрешение на парковку в виде наклейки, которая должна быть прикреплена " + 
+			"к вашему лобовому стеклу. Жители оговоренной зоны могут припарковать " + 
+			"авто в любой области с синей и белой разметкой бесплатно. Нерезиденты " + 
+			"должны платить за парковку в с *9:00* до *17:00* вечера.";
 	
 	private final static String danLinkText = "http://www.dan.co.il/russian/";
 	private final static String eggedLinkText = "http://www.egged.co.il/ru/HomePage.aspx";
 	private final static String railLinkText = "https://www.rail.co.il/ru";
 	
-	final static String THE_END_TEXT = "\n-------------------------------------\nСпасибо за обращние! Вам понравилось? Есть еще вопросы?";
+	private final static String parkingApprovalText = "https://www5.tel-aviv.gov.il/TlvForms/Vacation.aspx";
+	private final static String parkingFineText = "Когда вам выписывают штраф за парковку, обычно его кладут под дворники на переднем ветровом стекле. В течение 30 дней вам также дублируют копию штрафа по почте.\n" + 
+			"У вас есть 90 дней на оплату штрафа, начиная от даты выдачи.\n" + 
+			"Вы можете оплатить в любом отделении почтового отделения, в ближайшем банке или просто позвонить в 106 и предоставив данные вашей кредитной карты. Еще один вариант – оплата онлайн на сайте муниципалитета."+ 
+			"\nhttps://www5.tel-aviv.gov.il/tlv4u/parking/Reports/Default.aspx";
+	private final static String parkingFineCancelText = "Обжалование штрафа\n" + 
+			"Штраф можно обжаловать в случаях, если можете подтвердить документально или есть письменные доказательства следующих ситуаций:\n" + 
+			"•  штраф был выписан несправедливо;\n" + 
+			"•  вы можете доказать, что не нарушали правил парковки Израиля;\n" + 
+			"•  есть доказательства медицинской или иной чрезвычайной ситуации.\n" + 
+			"В таком случае вы можете представить доказательства в отдел парковки муниципалитета."+
+			"\nhttps://www5.tel-aviv.gov.il/TlvForms/Vacation.aspx";
+	
+	private final static String waterText = "Вода в Израиле находится в распоряжении так называемых «водных концернов» («таагидей маим»), у каждого муниципалитета есть свой концерн. \n" + 
+			"\n" + 
+			"Важный совет: водный тариф зависит от количества людей, проживающих в квартире. На каждого человека полагается 7 кубических метров воды на два месяца по «низкому» тарифу. Последующие кубометры уже будут стоить вам гораздо больше. Для того, чтобы послать уведомление о количестве человек, проживающих в квартире следует также заполнить соответствующую форму и приложить к ней копии всех «теудат зеутов» (с «сефахом»!) всех проживающих старше 18 лет. Дети меньше 18 лет прописаны во вкладышах («сефах») своих родителей.";
+	
+	private final static String waterNumPplDeclarationText = 
+			"Водный тариф зависит от количества людей, проживающих в квартире.. Для того, чтобы послать уведомление о количестве человек, проживающих в квартире следует также заполнить форму.\n" + 
+			"\n" + 
+			"https://www.mybusiness-websuite-files.com/MeyAvivimWebsite/newcase1.asp?formId=2";
+	private final static String waterPayText = "https://paybill.milgam.co.il";
+	private final static String garbageText = "Если около вашего дома есть мусор или ваш мусорный бак переполнен вам надо позвонить в муниципальную службу 106 и попросить убрать мусор.";
+	private final static String suigeText = "Муниципалитет отвечает за канализацию на улице. Все что касается канализации внутри дома в ответственности каждого каждой квартиры. Если на улице прорвало люк канализации вам нужно обратиться в В муниципалитет 106 и сообщить о проблеме. Если проблема с канализации внутри дома то вам надо обратиться к сантехнику.";
+	private final static String suigeOnLineText = "https://www5.tel-aviv.gov.il/TlvForms/tlvPublicPetition/Default.aspx?st=17";
+	final static String THE_END_TEXT = "\n-------------------------------------\n_Спасибо за обращние! Вам понравилось? Есть еще вопросы?_";
 	final static String[][] THE_END_MENU = {{"вернуться в главное меню","оставить пожелания"}, {"основной канал Бориса Шиндлера"}};
 	private final static String contactMail = "infoshindler@gmail.com";
 	private final static String shindlerChannel = "https://t.me/tlv2018";
@@ -84,24 +118,35 @@ public class Actions {
 	
 	static {
 		Utils.addAction("жилье", Actions::appartment, null, "главное меню", false);
-		/**/Utils.addAction("вода", Actions::water, null, "жилье", false);
+		/**/Utils.addAction("вода", Actions::water, waterText, "жилье", false);
+		/**//**/Utils.addAction("Декларация количества людей он лайн", Actions::waterNumPplDeclaration, waterNumPplDeclarationText, "вода", true);
+		/**//**/Utils.addAction("Оплатит  счет воды", Actions::waterPay, waterPayText, "вода", true);
 		/**//**/Utils.addAction("арнона", Actions::arnona, arnonaText, "жилье", false);
 		/**//**//**/Utils.addAction("изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText, "арнона", false);
 		/**//**//**//**/Utils.addAction("получить форму на емэйл", Actions::arnonaChangeAdressSendMail, pleaseEnterMailText, "изменить домашний адрес", false);
 		/**//**//**//**//**/Utils.addAction("@", Actions::sendMail, mailSentTextText, "изменить домашний адрес", true);
 		/**//**//**//**/Utils.addAction("показать форму на экране", Actions::arnonaChangeAdressSendFile, null, "изменить домашний адрес", true);
+		/**//**//**//**/Utils.addAction("подать форму он лайн", Actions::arnonaChangeAdressOnLine, arnonaChnangeAdressOnLineText, "изменить домашний адрес", true);
 		/**//**//**/Utils.addAction("оплатить", Actions::arnonaPayBill, arnonaPayBillText, "арнона", true);
-		/**//**//**/Utils.addAction("льготы", Actions::arnonaDiscount, arnonaDiscountText, "арнона", true);
-		/**/Utils.addAction("уличная канализация", Actions::suige, null, "жилье", false);
+		/**//**//**/Utils.addAction("льготы", Actions::arnonaDiscount, arnonaDiscountText, "арнона", false);
+		/**//**//**//**/Utils.addAction("Подать просбу на скидку он лайн", Actions::arnonaDiscountApealOnLine, arnonaDiscountApealOnLineText, "льготы", true);
+		/**/Utils.addAction("уличная канализация", Actions::suige, suigeText, "жилье", false);
+		/**//**/Utils.addAction("Обращение он лайн о проблемах канализации", Actions::suigeOnLine, suigeOnLineText, "уличная канализация", true);
+		
 		/**/Utils.addAction("комары", Actions::mosqito, null, "жилье", false);
-		/**/Utils.addAction("мусор", Actions::garbage, null, "жилье", false);
-		/**/Utils.addAction("электричество", Actions::electricity, electricityText, "жилье", true);
+		/**/Utils.addAction("мусор", Actions::garbage, garbageText, "жилье", true);
+		/**/Utils.addAction("электричество", Actions::electricity, electricityText, "жилье", false);
+		/**//**/Utils.addAction("Оплата электричества", Actions::electricityPay, electricityPayText, "электричество", true);
 		Utils.addAction("транспорт", Actions::transportation, transportationText, "главное меню", false);
 		/**/Utils.addAction("Kомпания Дан", Actions::transportationLinks, danLinkText, "транспорт", true);
 		/**/Utils.addAction("Кооператив Эгед", Actions::transportationLinks, eggedLinkText, "транспорт", true);
 		/**/Utils.addAction("Kомпания Железные дороги Израиля", Actions::transportationLinks, railLinkText, "транспорт", true);
 		Utils.addAction("учеба", Actions::education, null, "главное меню", false);
-		Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "главное меню", true);
+		Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "главное меню", false);
+		/**/Utils.addAction("получит разрешение на парковку", Actions::parkingApproval, parkingApprovalText, "Разрешение на парковку", true);
+		/**/Utils.addAction("заплатит штраф", Actions::parkingFine, parkingFineText, "Разрешение на парковку", true);
+		/**/Utils.addAction("отменит штраф", Actions::parkingFineCancel, parkingFineCancelText, "Разрешение на парковку", true);
+		
 		Utils.addAction("здоровье", Actions::health, null, "главное меню", false);
 		Utils.addAction("документы", Actions::docs, null, "главное меню", false);
 		
@@ -119,8 +164,8 @@ public class Actions {
 	
 	public static Object appartment(Message m) {	
 		String[][] rows = new String[][] {
-			{"вода","арнона","мусор","газ"},
-			{"уличная канализация","комары", "электричество"}
+			{"вода","арнона","мусор", "комары"},
+			{"уличная канализация", "газ", "электричество"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
@@ -142,22 +187,39 @@ public class Actions {
 	}
 	
 	public static Object electricity(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
+		String[][] rows = new String[][] {
+			{"Оплата электричества"}
+		}; 
+		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
 	}
-	
+	public static Object electricityPay(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}	
 	public static Object arnonaPayBill(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
 	
 	public static Object arnonaDiscount(Message m) {
+		String[][] rows = new String[][] {
+			{"Подать просбу на скидку он лайн"}
+		}; 
+		SendMessage message = Utils.createSendMessage(m, rows);
+		return message;
+	}
+	public static Object arnonaDiscountApealOnLine(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
 	
 	public static Object parking(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
+		String[][] rows = new String[][] {
+			{"получит разрешение на парковку"},
+			{"заплатит штраф", "отменит штраф"}
+		}; 
+		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
 	}
 	
@@ -177,9 +239,22 @@ public class Actions {
 	}
 	
 	public static Object water(Message m) {
+		String[][] rows = new String[][] {
+			{"Декларация количества людей он лайн"},
+			{"Оплатит  счет воды"}
+		}; 
+		SendMessage message = Utils.createSendMessage(m, rows);
+		return message;
+	}
+	public static Object waterNumPplDeclaration(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
+	public static Object waterPay(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
+	
 	
 	public static Object arnona(Message m) {
 		
@@ -192,6 +267,14 @@ public class Actions {
 	}
 	
 	public static Object suige(Message m) {
+		String[][] rows = new String[][] {
+			{"Обращение он лайн о проблемах канализации"}
+		}; 
+		SendMessage message = Utils.createSendMessage(m, rows);
+		return message;
+	}
+	
+	public static Object suigeOnLine(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
@@ -209,7 +292,7 @@ public class Actions {
 	public static Object arnonaChangeAdress(Message m) {
 		
 		String[][] rows = new String[][] {
-			{"получить форму на емэйл"},
+			{"получить форму на емэйл", "подать форму он лайн"},
 			{"показать форму на экране"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
@@ -234,12 +317,32 @@ public class Actions {
 		return new Object[] {docMsg, message};
 	}
 	
+	public static Object arnonaChangeAdressOnLine(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
+	
 	public static Object showMailAtEnd(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
 	
 	public static Object shindlerMainChannel(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
+	
+	public static Object parkingApproval(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
+	
+	public static Object parkingFine(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
+	
+	public static Object parkingFineCancel(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
