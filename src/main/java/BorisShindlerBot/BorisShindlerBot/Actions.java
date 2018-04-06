@@ -8,7 +8,6 @@ import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 
 public class Actions {
-	
 	public final static String welcomeText = "Вас приветствует чат-бот удобного Тель-Авива от Бориса Шиндлера.\n" + 
 			"Получайте всю справочную информацию и справки от городских служб в\n" + 
 			"вашем Телеграме на вашем языке.";
@@ -67,7 +66,6 @@ public class Actions {
 	private final static String eggedLinkText = "http://www.egged.co.il/ru/HomePage.aspx";
 	private final static String railLinkText = "https://www.rail.co.il/ru";
 	
-	
 	final static String THE_END_TEXT = "\n-------------------------------------\nСпасибо за обращние! Вам понравилось? Есть еще вопросы?";
 	final static String[][] THE_END_MENU = {{"вернуться в главное меню","оставить пожелания"}, {"основной канал Бориса Шиндлера"}};
 	private final static String contactMail = "infoshindler@gmail.com";
@@ -83,7 +81,6 @@ public class Actions {
 	public interface Action {
 		Object getActionMessage(Message m);
 	}
-	
 	
 	static {
 		Utils.addAction("жилье", Actions::appartment, null, "главное меню", false);
