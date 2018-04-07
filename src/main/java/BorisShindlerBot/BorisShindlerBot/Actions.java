@@ -29,16 +29,11 @@ public class Actions {
 			"Тель-Авив и Центральный округ объединяются в агломерацию Гуш-Дан, в " + 
 			"которой действует единая система оплаты за проезд на автобусах " + 
 			"компаний *Dan*, *Egged*, *Kavim* ,*Metropoline* и поезда.";
-<<<<<<< HEAD
 	private final static String electricityText = "Электрическая компания Израиля (Производит, передает и распределяет практически всё электричество, используемое в стране. Государству Израиль принадлежит приблизительно 99,85 % Компании." +
 			"При любой проблеме с электричеством стоит обратиться в электро компанию по телефону 103 или он Лайн\n" +
 			"https://www.iec.co.il/pages/default.aspx" ;
 	private final static String electricityPayText = "https://www.iec.co.il/pages/billspayment.aspx";
 	private final static String arnonaPayBillText = "goo.gl/48zE6D";
-=======
-	private final static String electricityText = "https://www.iec.co.il/pages/default.aspx" ;
-	private final static String arnonaPayBillText = "https://www.mybills.co.il/payments/147/%D7%90%D7%A8%D7%A0%D7%95%D7%A0%D7%94_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91.html";
->>>>>>> 54b329ac2f92ff00082d22213d3864884f2a8d87
 	private final static String arnonaDiscountText = "Кому положены скидки по арноне\n" + 
 			" \n" + 
 			"1. Новые репатрианты\n" + 
@@ -59,7 +54,6 @@ public class Actions {
 			" \n" + 
 			"Так же существуют различные скидки на оплату арноны по медицинским " + 
 			"показателям и экономическому положению.";
-<<<<<<< HEAD
 	private final static String arnonaDiscountApealOnLineText = "Если вы новый репатриант, вам полагается 90% скидка на «арнону» в течение первого года после репатриации, на первые 100 метров вашей квартиры."
 			+ "\nhttps://www5.tel-aviv.gov.il/TlvForms/TlvArnonaDiscountRequest/";
 	private final static String arnonaText = "Арнона – это муниципальный налог, установленный правительством, " + 
@@ -70,12 +64,6 @@ public class Actions {
 			"Для того, чтобы точно определить адрес вашей квартиры в муниципалитете советую иметь при себе одну из предыдущих квитанций об оплате, на ней они смогут увидеть так называемый платежный номер вашей квартиры «миспар мешалем». Если у вас ее нет, не беспокойтесь, они смогут идентифицировать жилье по номеру «теудат зеута» его хозяина, который должен фигурировать на вашем договоре о съеме.";
 	private final static String arnonaChnangeAdressOnLineText =
 			"\nhttps://www.tel-aviv.gov.il/Residents/Arnona/Pages/ArnonaSwitching.aspx";
-=======
-	private final static String arnonaText = "Арнона – это муниципальный налог, установленный правительством, " + 
-			"которым облагается владелец недвижимости или проживающий на " + 
-			"съемной квартире.";
-	private final static String arnonaChnangeAdressText = "https://www.tel-aviv.gov.il/Residents/Arnona/Pages/ArnonaSwitching.aspx";
->>>>>>> 54b329ac2f92ff00082d22213d3864884f2a8d87
 	private final static String parkingText = "Для того чтобы обеспечить жителей города бесплатной парковкой, местнось " + 
 			"разделена на различные зоны парковки. Существует официальное " + 
 			"разрешение на парковку в виде наклейки, которая должна быть прикреплена " + 
@@ -190,7 +178,6 @@ public class Actions {
 			{"Kомпания Железные дороги Израиля"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
-		message.enableMarkdown(true);
 		return message;
 	}
 	
@@ -228,16 +215,11 @@ public class Actions {
 	}
 	
 	public static Object parking(Message m) {
-<<<<<<< HEAD
 		String[][] rows = new String[][] {
 			{"получит разрешение на парковку"},
 			{"заплатит штраф", "отменит штраф"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
-=======
-		SendMessage message = Utils.createSendMessage(m);
-		message.enableMarkdown(true);
->>>>>>> 54b329ac2f92ff00082d22213d3864884f2a8d87
 		return message;
 	}
 	
@@ -349,6 +331,7 @@ public class Actions {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
+	
 	
 	public static Object parkingApproval(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
