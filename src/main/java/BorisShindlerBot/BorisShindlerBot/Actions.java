@@ -139,39 +139,39 @@ public class Actions {
 	static {
 		Utils.addAction("арнона", Actions::arnona, arnonaText, "главное меню", false);
 		/**/Utils.addAction("изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText, "арнона", false);
-		/**//**/Utils.addAction("получить форму на емэйл", Actions::arnonaChangeAdressSendMail, pleaseEnterMailText, "изменить домашний адрес", false);
+		/**//**/Utils.addAction("получить форму на емэйл", Actions::genericAction, pleaseEnterMailText, "изменить домашний адрес", false);
 		/**//**//**/Utils.addAction("@", Actions::sendMail, mailSentTextText, "изменить домашний адрес", true);
 		/**//**/Utils.addAction("показать форму на экране", Actions::arnonaChangeAdressSendFile, null, "изменить домашний адрес", true);
-		/**//**/Utils.addAction("подать форму он лайн", Actions::arnonaChangeAdressOnLine, arnonaChnangeAdressOnLineText, "изменить домашний адрес", true);
-		/**/Utils.addAction("оплатить", Actions::arnonaPayBill, arnonaPayBillText, "арнона", true);
+		/**//**/Utils.addAction("подать форму он лайн", Actions::genericAction, arnonaChnangeAdressOnLineText, "изменить домашний адрес", true);
+		/**/Utils.addAction("оплатить", Actions::genericAction, arnonaPayBillText, "арнона", true);
 		/**/Utils.addAction("льготы", Actions::arnonaDiscount, arnonaDiscountText, "арнона", false);
-		/**//**/Utils.addAction("Подать просбу на скидку он лайн", Actions::arnonaDiscountApealOnLine, arnonaDiscountApealOnLineText, "льготы", true);
+		/**//**/Utils.addAction("Подать просбу на скидку он лайн", Actions::genericAction, arnonaDiscountApealOnLineText, "льготы", true);
 		Utils.addAction("жилье", Actions::appartment, null, "главное меню", false);
 		/**/Utils.addAction("вода", Actions::water, waterText, "жилье", false);
-		/**//**/Utils.addAction("Декларация количества людей он лайн", Actions::waterNumPplDeclaration, waterNumPplDeclarationText, "вода", true);
-		/**//**/Utils.addAction("Оплатит  счет воды", Actions::waterPay, waterPayText, "вода", true);		
+		/**//**/Utils.addAction("Декларация количества людей он лайн", Actions::genericAction, waterNumPplDeclarationText, "вода", true);
+		/**//**/Utils.addAction("Оплатит  счет воды", Actions::genericAction, waterPayText, "вода", true);		
 		/**/Utils.addAction("уличная канализация", Actions::suige, suigeText, "жилье", false);
-		/**//**/Utils.addAction("Обращение он лайн о проблемах канализации", Actions::suigeOnLine, suigeOnLineText, "уличная канализация", true);
-		/**/Utils.addAction("комары", Actions::mosqito, mosqitoText, "жилье", true);
-		/**/Utils.addAction("мусор", Actions::garbage, garbageText, "жилье", true);
+		/**//**/Utils.addAction("Обращение он лайн о проблемах канализации", Actions::genericAction, suigeOnLineText, "уличная канализация", true);
+		/**/Utils.addAction("комары", Actions::genericAction, mosqitoText, "жилье", true);
+		/**/Utils.addAction("мусор", Actions::genericAction, garbageText, "жилье", true);
 		/**/Utils.addAction("электричество", Actions::electricity, electricityText, "жилье", false);
-		/**//**/Utils.addAction("Оплата электричества", Actions::electricityPay, electricityPayText, "электричество", true);
-		/**/Utils.addAction("газ", Actions::gaz, gazText, "жилье", true);
+		/**//**/Utils.addAction("Оплата электричества", Actions::genericAction, electricityPayText, "электричество", true);
+		/**/Utils.addAction("газ", Actions::genericAction, gazText, "жилье", true);
 		Utils.addAction("транспорт", Actions::transportation, transportationText, "главное меню", false);
-		/**/Utils.addAction("Kомпания Дан", Actions::transportationLinks, danLinkText, "транспорт", true);
-		/**/Utils.addAction("Кооператив Эгед", Actions::transportationLinks, eggedLinkText, "транспорт", true);
-		/**/Utils.addAction("Kомпания Железные дороги Израиля", Actions::transportationLinks, railLinkText, "транспорт", true);
-		Utils.addAction("учеба", Actions::education, TODO_TEXT, "главное меню", false);
+		/**/Utils.addAction("Kомпания Дан", Actions::genericAction, danLinkText, "транспорт", true);
+		/**/Utils.addAction("Кооператив Эгед", Actions::genericAction, eggedLinkText, "транспорт", true);
+		/**/Utils.addAction("Kомпания Железные дороги Израиля", Actions::genericAction, railLinkText, "транспорт", true);
+		Utils.addAction("учеба", Actions::genericAction, TODO_TEXT, "главное меню", false);
 		Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "главное меню", false);
-		/**/Utils.addAction("получит разрешение на парковку", Actions::parkingApproval, parkingApprovalText, "Разрешение на парковку", true);
-		/**/Utils.addAction("заплатит штраф", Actions::parkingFine, parkingFineText, "Разрешение на парковку", true);
-		/**/Utils.addAction("отменит штраф", Actions::parkingFineCancel, parkingFineCancelText, "Разрешение на парковку", true);	
-		Utils.addAction("здоровье", Actions::health, TODO_TEXT, "главное меню", false);
-		Utils.addAction("документы", Actions::docs, null, "главное меню", false);
+		/**/Utils.addAction("получит разрешение на парковку", Actions::genericAction, parkingApprovalText, "Разрешение на парковку", true);
+		/**/Utils.addAction("заплатит штраф", Actions::genericAction, parkingFineText, "Разрешение на парковку", true);
+		/**/Utils.addAction("отменит штраф", Actions::genericAction, parkingFineCancelText, "Разрешение на парковку", true);	
+		Utils.addAction("здоровье", Actions::genericAction, TODO_TEXT, "главное меню", false);
+		Utils.addAction("документы", Actions::genericAction, null, "главное меню", false);
 		
-		Utils.addAction("оставить пожелания", Actions::showMailAtEnd, contactMail, "главное меню", false);
-		Utils.addAction("основной канал Бориса Шиндлера", Actions::shindlerMainChannel, shindlerChannelText, "главное меню", false);
-		Utils.addAction("страница ФБ Бориса Шиндлера", Actions::shindlerMainFB, shindlerFBText, "главное меню", false);
+		Utils.addAction("оставить пожелания", Actions::genericAction, contactMail, "главное меню", false);
+		Utils.addAction("основной канал Бориса Шиндлера", Actions::genericAction, shindlerChannelText, "главное меню", false);
+		Utils.addAction("страница ФБ Бориса Шиндлера", Actions::genericAction, shindlerFBText, "главное меню", false);
 
 	}
 	
@@ -202,7 +202,7 @@ public class Actions {
 		return message;
 	}
 	
-	public static Object transportationLinks(Message m) {
+	public static Object genericAction(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
@@ -214,24 +214,12 @@ public class Actions {
 		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
 	}
-	public static Object electricityPay(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}	
-	public static Object arnonaPayBill(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
 	
 	public static Object arnonaDiscount(Message m) {
 		String[][] rows = new String[][] {
 			{"Подать просбу на скидку он лайн"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
-		return message;
-	}
-	public static Object arnonaDiscountApealOnLine(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
 	
@@ -244,21 +232,6 @@ public class Actions {
 		return message;
 	}
 	
-	public static Object health(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object docs(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object education(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
 	public static Object water(Message m) {
 		String[][] rows = new String[][] {
 			{"Декларация количества людей он лайн"},
@@ -267,15 +240,6 @@ public class Actions {
 		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
 	}
-	public static Object waterNumPplDeclaration(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	public static Object waterPay(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
 	
 	public static Object arnona(Message m) {
 		
@@ -295,21 +259,6 @@ public class Actions {
 		return message;
 	}
 	
-	public static Object suigeOnLine(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object mosqito(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object garbage(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
 	public static Object arnonaChangeAdress(Message m) {
 		
 		String[][] rows = new String[][] {
@@ -317,11 +266,6 @@ public class Actions {
 			{"показать форму на экране"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
-		return message;
-	}
-	
-	public static Object arnonaChangeAdressSendMail(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}
 	
@@ -338,45 +282,5 @@ public class Actions {
 				.setDocument("BQADBAADPAMAAuuBQVKMjF-LtHJ6BwI").setCaption("pdf");
 		SendMessage message = Utils.createSendMessage(m);
 		return new Object[] {docMsg, message};
-	}
-	
-	public static Object arnonaChangeAdressOnLine(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object showMailAtEnd(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object shindlerMainChannel(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object shindlerMainFB(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object parkingApproval(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object parkingFine(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object parkingFineCancel(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
-	}
-	
-	public static Object gaz(Message m) {
-		SendMessage message = Utils.createSendMessage(m);
-		return message;
 	}
 }
