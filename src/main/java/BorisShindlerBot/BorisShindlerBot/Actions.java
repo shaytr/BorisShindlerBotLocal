@@ -75,7 +75,8 @@ public class Actions {
 	private final static String eggedLinkText = "http://www.egged.co.il/ru/HomePage.aspx";
 	private final static String railLinkText = "https://www.rail.co.il/ru";
 	
-	private final static String parkingApprovalText = "https://www5.tel-aviv.gov.il/TlvForms/Vacation.aspx";
+	private final static String parkingApprovalText = "Просьбу о получении наклейки жителя города для парковки вы можете подать  онлайн на сайте  Муниципалитета.\n" + 
+	"https://www5.tel-aviv.gov.il/TlvForms/Vacation.aspx";
 	private final static String parkingFineText = "Когда вам выписывают штраф за парковку, обычно его кладут под дворники на переднем ветровом стекле. В течение 30 дней вам также дублируют копию штрафа по почте.\n" + 
 			"У вас есть 90 дней на оплату штрафа, начиная от даты выдачи.\n" + 
 			"Вы можете оплатить в любом отделении почтового отделения, в ближайшем банке или просто позвонить в 106 и предоставив данные вашей кредитной карты. Еще один вариант – оплата онлайн на сайте муниципалитета."+ 
@@ -100,12 +101,30 @@ public class Actions {
 	private final static String garbageText = "Если около вашего дома есть мусор или ваш мусорный бак переполнен вам надо позвонить в муниципальную службу 106 и попросить убрать мусор.";
 	private final static String suigeText = "Муниципалитет отвечает за канализацию на улице. Все что касается канализации внутри дома в ответственности каждого каждой квартиры. Если на улице прорвало люк канализации вам нужно обратиться в В муниципалитет 106 и сообщить о проблеме. Если проблема с канализации внутри дома то вам надо обратиться к сантехнику.";
 	private final static String suigeOnLineText = "https://www5.tel-aviv.gov.il/TlvForms/tlvPublicPetition/Default.aspx?st=17";
-	final static String THE_END_TEXT = "\n-------------------------------------\n_Спасибо за обращние! Вам понравилось? Есть еще вопросы?_";
-	final static String[][] THE_END_MENU = {{"вернуться в главное меню","оставить пожелания"}, {"основной канал Бориса Шиндлера"}};
+	final static String THE_END_TEXT = "\n-------------------------------------\n_Спасибо за обращние! Вам понравилось? Есть еще вопросы?" + 
+			" Буду рад услишат ваши пожелания на моей офицалной странице в Фейсбуке" + 
+			" Подписывайтесь на мой оффицалный телеграм канал :)_";
+	
+	final static String[][] THE_END_MENU = {{"оставить пожелания", "страница ФБ Бориса Шиндлера"}, {"основной канал Бориса Шиндлера", "вернуться в главное меню"}};
 	private final static String contactMail = "infoshindler@gmail.com";
-	private final static String shindlerChannel = "https://t.me/tlv2018";
+	private final static String shindlerChannelText = "https://t.me/tlv2018";
+	private final static String shindlerFBText = "https://www.facebook.com/ListOfShindler/";
+	
 	private final static String pleaseEnterMailText = "пожалуйста введите адрес электронной почты:";
 	private final static String mailSentTextText = "отправлено";
+	private final static String gazText = "В Израиле газом обеспечивает через систему централизованной подачи газа или с помощью баллонов.\n" + 
+			"\n" + 
+			"Вы можете выбрать поставщика из списка\n" + 
+			"Цена газа разная у каждого поставщика и стоит и её проверить:\n" + 
+			"https://www.amisragas.co.il/Eng/Index.asp?CategoryID=119&ArticleID=215\n" + 
+			"\n" + 
+			"http://www.doralongas.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA-%D7%95%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%94%D7%AA%D7%A7%D7%A0%D7%AA-%D7%92%D7%96-%D7%9C%D7%91%D7%99%D7%AA/\n" + 
+			"\n" + 
+			"http://www.gazyagel.co.il/%D7%92%D7%96-%D7%91%D7%99%D7%AA%D7%99.html\n" + 
+			"\n" + 
+			"https://www.pazgas.co.il/he/"; 
+	private final static String mosqitoText = "При муниципалитете существует специальное отделение которая занимается уничтожением Комаров и других вредителей. Если у вас возле дома открытый источник воды вы можете обратиться по телефону 106 для удобрения Комаров";
+	private final static String TODO_TEXT = "*в разработке...*";
 	
 	final static HashMap<String,Action> actionsMap = new HashMap<>();
 	final static HashMap<String,String> textsMap = new HashMap<>();
@@ -116,42 +135,44 @@ public class Actions {
 		Object getActionMessage(Message m);
 	}
 	
+	
 	static {
+		Utils.addAction("арнона", Actions::arnona, arnonaText, "главное меню", false);
+		/**/Utils.addAction("изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText, "арнона", false);
+		/**//**/Utils.addAction("получить форму на емэйл", Actions::arnonaChangeAdressSendMail, pleaseEnterMailText, "изменить домашний адрес", false);
+		/**//**//**/Utils.addAction("@", Actions::sendMail, mailSentTextText, "изменить домашний адрес", true);
+		/**//**/Utils.addAction("показать форму на экране", Actions::arnonaChangeAdressSendFile, null, "изменить домашний адрес", true);
+		/**//**/Utils.addAction("подать форму он лайн", Actions::arnonaChangeAdressOnLine, arnonaChnangeAdressOnLineText, "изменить домашний адрес", true);
+		/**/Utils.addAction("оплатить", Actions::arnonaPayBill, arnonaPayBillText, "арнона", true);
+		/**/Utils.addAction("льготы", Actions::arnonaDiscount, arnonaDiscountText, "арнона", false);
+		/**//**/Utils.addAction("Подать просбу на скидку он лайн", Actions::arnonaDiscountApealOnLine, arnonaDiscountApealOnLineText, "льготы", true);
 		Utils.addAction("жилье", Actions::appartment, null, "главное меню", false);
 		/**/Utils.addAction("вода", Actions::water, waterText, "жилье", false);
 		/**//**/Utils.addAction("Декларация количества людей он лайн", Actions::waterNumPplDeclaration, waterNumPplDeclarationText, "вода", true);
-		/**//**/Utils.addAction("Оплатит  счет воды", Actions::waterPay, waterPayText, "вода", true);
-		/**//**/Utils.addAction("арнона", Actions::arnona, arnonaText, "жилье", false);
-		/**//**//**/Utils.addAction("изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText, "арнона", false);
-		/**//**//**//**/Utils.addAction("получить форму на емэйл", Actions::arnonaChangeAdressSendMail, pleaseEnterMailText, "изменить домашний адрес", false);
-		/**//**//**//**//**/Utils.addAction("@", Actions::sendMail, mailSentTextText, "изменить домашний адрес", true);
-		/**//**//**//**/Utils.addAction("показать форму на экране", Actions::arnonaChangeAdressSendFile, null, "изменить домашний адрес", true);
-		/**//**//**//**/Utils.addAction("подать форму он лайн", Actions::arnonaChangeAdressOnLine, arnonaChnangeAdressOnLineText, "изменить домашний адрес", true);
-		/**//**//**/Utils.addAction("оплатить", Actions::arnonaPayBill, arnonaPayBillText, "арнона", true);
-		/**//**//**/Utils.addAction("льготы", Actions::arnonaDiscount, arnonaDiscountText, "арнона", false);
-		/**//**//**//**/Utils.addAction("Подать просбу на скидку он лайн", Actions::arnonaDiscountApealOnLine, arnonaDiscountApealOnLineText, "льготы", true);
+		/**//**/Utils.addAction("Оплатит  счет воды", Actions::waterPay, waterPayText, "вода", true);		
 		/**/Utils.addAction("уличная канализация", Actions::suige, suigeText, "жилье", false);
 		/**//**/Utils.addAction("Обращение он лайн о проблемах канализации", Actions::suigeOnLine, suigeOnLineText, "уличная канализация", true);
-		
-		/**/Utils.addAction("комары", Actions::mosqito, null, "жилье", false);
+		/**/Utils.addAction("комары", Actions::mosqito, mosqitoText, "жилье", true);
 		/**/Utils.addAction("мусор", Actions::garbage, garbageText, "жилье", true);
 		/**/Utils.addAction("электричество", Actions::electricity, electricityText, "жилье", false);
 		/**//**/Utils.addAction("Оплата электричества", Actions::electricityPay, electricityPayText, "электричество", true);
+		/**/Utils.addAction("газ", Actions::gaz, gazText, "жилье", true);
 		Utils.addAction("транспорт", Actions::transportation, transportationText, "главное меню", false);
 		/**/Utils.addAction("Kомпания Дан", Actions::transportationLinks, danLinkText, "транспорт", true);
 		/**/Utils.addAction("Кооператив Эгед", Actions::transportationLinks, eggedLinkText, "транспорт", true);
 		/**/Utils.addAction("Kомпания Железные дороги Израиля", Actions::transportationLinks, railLinkText, "транспорт", true);
-		Utils.addAction("учеба", Actions::education, null, "главное меню", false);
+		Utils.addAction("учеба", Actions::education, TODO_TEXT, "главное меню", false);
 		Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "главное меню", false);
 		/**/Utils.addAction("получит разрешение на парковку", Actions::parkingApproval, parkingApprovalText, "Разрешение на парковку", true);
 		/**/Utils.addAction("заплатит штраф", Actions::parkingFine, parkingFineText, "Разрешение на парковку", true);
-		/**/Utils.addAction("отменит штраф", Actions::parkingFineCancel, parkingFineCancelText, "Разрешение на парковку", true);
-		
-		Utils.addAction("здоровье", Actions::health, null, "главное меню", false);
+		/**/Utils.addAction("отменит штраф", Actions::parkingFineCancel, parkingFineCancelText, "Разрешение на парковку", true);	
+		Utils.addAction("здоровье", Actions::health, TODO_TEXT, "главное меню", false);
 		Utils.addAction("документы", Actions::docs, null, "главное меню", false);
 		
 		Utils.addAction("оставить пожелания", Actions::showMailAtEnd, contactMail, "главное меню", false);
-		Utils.addAction("основной канал Бориса Шиндлера", Actions::shindlerMainChannel, shindlerChannel, "главное меню", false);
+		Utils.addAction("основной канал Бориса Шиндлера", Actions::shindlerMainChannel, shindlerChannelText, "главное меню", false);
+		Utils.addAction("страница ФБ Бориса Шиндлера", Actions::shindlerMainFB, shindlerFBText, "главное меню", false);
+
 	}
 	
 	public static Object getAction(String command, Message message) {
@@ -164,8 +185,8 @@ public class Actions {
 	
 	public static Object appartment(Message m) {	
 		String[][] rows = new String[][] {
-			{"вода","арнона","мусор", "комары"},
-			{"уличная канализация", "газ", "электричество"}
+			{"вода","газ","мусор", "комары"},
+			{"уличная канализация", "электричество"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
@@ -305,12 +326,14 @@ public class Actions {
 	}
 	
 	public static Object sendMail(Message m) {
+		//TODO How to send mail ?? for now just send file
+		SendDocument docMsg = new SendDocument().setChatId(m.getChatId())
+				.setDocument("BQADBAADPAMAAuuBQVKMjF-LtHJ6BwI").setCaption("pdf");
 		SendMessage message = Utils.createSendMessage(m);
-		return message;
+		return new Object[] {docMsg, message};
 	}
 	
 	public static Object arnonaChangeAdressSendFile(Message m) {
-		// User sent /pic
 		SendDocument docMsg = new SendDocument().setChatId(m.getChatId())
 				.setDocument("BQADBAADPAMAAuuBQVKMjF-LtHJ6BwI").setCaption("pdf");
 		SendMessage message = Utils.createSendMessage(m);
@@ -332,6 +355,10 @@ public class Actions {
 		return message;
 	}
 	
+	public static Object shindlerMainFB(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
 	
 	public static Object parkingApproval(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
@@ -344,6 +371,11 @@ public class Actions {
 	}
 	
 	public static Object parkingFineCancel(Message m) {
+		SendMessage message = Utils.createSendMessage(m);
+		return message;
+	}
+	
+	public static Object gaz(Message m) {
 		SendMessage message = Utils.createSendMessage(m);
 		return message;
 	}

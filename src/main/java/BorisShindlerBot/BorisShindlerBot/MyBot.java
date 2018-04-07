@@ -71,8 +71,8 @@ public class MyBot extends TelegramLongPollingBot {
 
 	private SendMessage startAction(Message m) {
 		String[][] rows = new String[][] {
-			{"жилье","транспорт","учеба"},
-			{"здоровье", "Разрешение на парковку"}
+			{"жилье","арнона", "транспорт"},
+			{"Разрешение на парковку", "учеба", "здоровье"}
 		}; 
 		SendMessage message = Utils.createSendMessage(m, rows);
 		return message;
