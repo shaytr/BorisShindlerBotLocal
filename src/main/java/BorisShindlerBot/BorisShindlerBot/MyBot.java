@@ -79,7 +79,7 @@ public class MyBot extends TelegramLongPollingBot {
 	}
 
 	public String getBotUsername() {
-		return "BorisShindlerBot";
+		return "TLVBotBorisShindler";
 	}
 
 }
