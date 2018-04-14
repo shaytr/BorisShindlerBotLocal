@@ -82,7 +82,7 @@ public class Actions {
 	private final static String railLinkText = "https://www.rail.co.il/ru";
 	
 	private final static String parkingApprovalText = "Просьбу о получении наклейки жителя города, для парковки, Вы можете подать online на сайте муниципалитета.\n" +
-	"https://www5.tel-aviv.gov.il/TlvForms/Vacation.aspx";
+	"https://www5.tel-aviv.gov.il/TlvForms/Parking/tlvTagRequest/Default.aspx";
 	private final static String parkingFineText = "Когда Вам выписывают штраф за парковку, обычно его оставляют под дворниками, на переднем ветровом стекле. В течение 30 дней Вам, также, дублируются копию штрафа по почте.\n" +
 			"У Вас есть 90 дней на оплату штрафа, начиная от даты выдачи.\n" +
 			"Вы можете оплатить в любом почтовом отделении, в ближайшем банке или просто позвонив по номеру 106 и предоставив данные Вашей кредитной карты." +
@@ -94,8 +94,8 @@ public class Actions {
 			"•  штраф был выписан несправедливо;\n" + 
 			"•  Вы можете доказать, что не нарушали правил парковки Израиля;\n" +
 			"•  есть доказательства медицинской или иной чрезвычайной ситуации.\n" + 
-			"В таком случае Вы можете представить доказательства в отдел парковки муниципалитета."+
-			"\nhttps://www5.tel-aviv.gov.il/TlvForms/Vacation.aspx";
+			"В таком случае Вы можете представить доказательства в отдел парковки муниципалитета.\n"+
+			"https://www5.tel-aviv.gov.il/TlvForms/Parking/tlvObjectionReport/Default.aspx";
 	
 	private final static String waterText = "Вода в Израиле находится в распоряжении «водных концернов» («таагидей маим»)," +
 			" у каждого муниципалитета есть свой концерн. \n" +
