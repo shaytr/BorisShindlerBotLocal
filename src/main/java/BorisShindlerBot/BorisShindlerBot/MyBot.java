@@ -90,18 +90,20 @@ public class MyBot extends TelegramLongPollingBot {
 		SendMessage outMessage;
 		System.out.println("Broadcasting Mesage: " + outText);
 		int i = 0;
-		for (String chat_id: usetSet.getChatIds()) {
-			outMessage = new SendMessage()
-					.setChatId(chat_id).setText(outText);
-			outMessage.enableMarkdown(true);
-			try {
-				doSend(outMessage);
-				i++;
-			} catch (Throwable e) {
-				System.err.println("Broadcasting Mesage failed for cat_id: " + chat_id);
+		if (outText.length() > 1) {
+			for (String chat_id: usetSet.getChatIds()) {
+				outMessage = new SendMessage()
+						.setChatId(chat_id).setText(outText);
+				outMessage.enableMarkdown(true);
+				try {
+					doSend(outMessage);
+					i++;
+				} catch (Throwable e) {
+					System.err.println("Broadcasting Mesage failed for chat_id: " + chat_id);
+				}
 			}
 		}
-		outText = "_Broadcasting Mesage been sent for : " + i + " users_";
+		outText = "_Broadcasting Mesage been sent for : " + i + "/" + usetSet.getChatIds().size() + " users_";
 		outMessage = new SendMessage()
 				.setChatId(message.getChatId()).setText(outText);
 		outMessage.enableMarkdown(true);
