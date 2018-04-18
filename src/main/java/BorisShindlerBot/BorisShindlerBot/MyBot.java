@@ -1,5 +1,8 @@
 package BorisShindlerBot.BorisShindlerBot;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
 import org.telegram.telegrambots.api.methods.BotApiMethod;
 import org.telegram.telegrambots.api.methods.send.SendDocument;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -12,9 +15,15 @@ public class MyBot extends TelegramLongPollingBot {
 
 	
 	private final String token;
+	private final UserSet usetSet;
+	private final String broadcastPassword;
+	ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
-	public MyBot(String token) {
+
+	public MyBot(String token, UserSet usetSet, String broadcastPassword) {
 		this.token = token;
+		this.usetSet = usetSet;
+		this.broadcastPassword = broadcastPassword + " ";
 	}
 
 	@Override
@@ -29,7 +38,18 @@ public class MyBot extends TelegramLongPollingBot {
 			System.err.println(update);
 			return;
 		}
-		System.out.println(update);
+
+
+		// insert to database
+		
+		executor.execute(() -> {
+	        if(usetSet.addToSet(update)){
+	    		System.out.println(update);
+	            usetSet.inserInDB(update.getMessage().getChatId(), update.getMessage().getFrom().getId(),
+	                    update.getMessage().getFrom().getFirstName(), update.getMessage().getFrom().getLastName());
+	        }			
+		});
+
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// Set variables
 			String message_text = update.getMessage().getText();
@@ -41,6 +61,9 @@ public class MyBot extends TelegramLongPollingBot {
 				
 			} else if (message_text.contains("@")) {
 				sendMessage = Actions.getAction("@", update.getMessage());
+			}
+			else if (message_text.startsWith(broadcastPassword)) {
+				sendMessage = broadcastAction(update.getMessage());
 			}
 			else {
 				sendMessage = startAction(update.getMessage());
@@ -58,10 +81,38 @@ public class MyBot extends TelegramLongPollingBot {
 			}
 
 		}
+		
 
 	}
 
+	private Object broadcastAction(Message message) {
+		String outText = message.getText().substring(broadcastPassword.length());
+		SendMessage outMessage;
+		System.out.println("Broadcasting Mesage: " + outText);
+		int i = 0;
+		for (String chat_id: usetSet.getChatIds()) {
+			outMessage = new SendMessage()
+					.setChatId(chat_id).setText(outText);
+			outMessage.enableMarkdown(true);
+			try {
+				doSend(outMessage);
+				i++;
+			} catch (Throwable e) {
+				System.err.println("Broadcasting Mesage failed for cat_id: " + chat_id);
+			}
+		}
+		outText = "_Broadcasting Mesage been sent for : " + i + " users_";
+		outMessage = new SendMessage()
+				.setChatId(message.getChatId()).setText(outText);
+		outMessage.enableMarkdown(true);
+		System.out.println(outText);
+		return outMessage;
+	}
+
 	private void doSend(Object sendMessage) throws TelegramApiException {
+		if (sendMessage == null) {
+			return;
+		}
 		if (sendMessage instanceof BotApiMethod) {
 			execute((BotApiMethod) sendMessage); // Call method to send the message
 		} else {
