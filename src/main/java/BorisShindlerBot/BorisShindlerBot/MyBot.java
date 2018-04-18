@@ -17,8 +17,8 @@ public class MyBot extends TelegramLongPollingBot {
 	private final String token;
 	private final UserSet usetSet;
 	private final String broadcastPassword;
-	ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
-
+	ThreadPoolExecutor executorDB = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
+	ThreadPoolExecutor executorMessages = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
 	public MyBot(String token, UserSet usetSet, String broadcastPassword) {
 		this.token = token;
@@ -42,47 +42,45 @@ public class MyBot extends TelegramLongPollingBot {
 
 		// insert to database
 		
-		executor.execute(() -> {
+		executorDB.execute(() -> {
 	        if(usetSet.addToSet(update)){
 	    		System.out.println(update);
 	            usetSet.inserInDB(update.getMessage().getChatId(), update.getMessage().getFrom().getId(),
 	                    update.getMessage().getFrom().getFirstName(), update.getMessage().getFrom().getLastName());
 	        }			
 		});
-
-		if (update.hasMessage() && update.getMessage().hasText()) {
-			// Set variables
-			String message_text = update.getMessage().getText();
-			long chat_id = update.getMessage().getChatId();
-			Object sendMessage;
-			if (message_text.equals("/start")) {
-				sendMessage = startAction(update.getMessage());
-			} else if (null != (sendMessage = Actions.getAction(message_text, update.getMessage()))) {
-				
-			} else if (message_text.contains("@")) {
-				sendMessage = Actions.getAction("@", update.getMessage());
-			}
-			else if (message_text.startsWith(broadcastPassword)) {
-				sendMessage = broadcastAction(update.getMessage());
-			}
-			else {
-				sendMessage = startAction(update.getMessage());
-			}
-			try {
-				if (sendMessage instanceof Object[]) {
-					for(Object m: (Object[])sendMessage) {
-						doSend(m);
-					}
-				} else {
-					doSend(sendMessage);
+		executorMessages.execute(() -> {
+			if (update.hasMessage() && update.getMessage().hasText()) {
+				// Set variables
+				String message_text = update.getMessage().getText();
+				Object sendMessage;
+				if (message_text.equals("/start")) {
+					sendMessage = startAction(update.getMessage());
+				} else if (null != (sendMessage = Actions.getAction(message_text, update.getMessage()))) {
+					
+				} else if (message_text.contains("@")) {
+					sendMessage = Actions.getAction("@", update.getMessage());
 				}
-			} catch (TelegramApiException e) {
-				e.printStackTrace();
+				else if (message_text.startsWith(broadcastPassword)) {
+					sendMessage = broadcastAction(update.getMessage());
+				}
+				else {
+					sendMessage = startAction(update.getMessage());
+				}
+				try {
+					if (sendMessage instanceof Object[]) {
+						for(Object m: (Object[])sendMessage) {
+							doSend(m);
+						}
+					} else {
+						doSend(sendMessage);
+					}
+				} catch (TelegramApiException e) {
+					e.printStackTrace();
+				}
+	
 			}
-
-		}
-		
-
+		});
 	}
 
 	private Object broadcastAction(Message message) {
