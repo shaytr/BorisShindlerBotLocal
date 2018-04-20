@@ -17,8 +17,9 @@ public class MyBot extends TelegramLongPollingBot {
 	private final String token;
 	private final UserSet usetSet;
 	private final String broadcastPassword;
-	ThreadPoolExecutor executorDB = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
-	ThreadPoolExecutor executorMessages = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+	// executorDB threads size should be 1 for thread safety.
+	private final ThreadPoolExecutor executorDB = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
+	private final ThreadPoolExecutor executorMessages = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
 	public MyBot(String token, UserSet usetSet, String broadcastPassword) {
 		this.token = token;
@@ -33,23 +34,20 @@ public class MyBot extends TelegramLongPollingBot {
 
 	@SuppressWarnings("unchecked")
 	public void onUpdateReceived(Update update) {
-		if (update.getMessage().getFrom().getBot()) {
-			// message sent by a bot.
-			System.err.println(update);
-			return;
-		}
-
-
-		// insert to database
-		
-		executorDB.execute(() -> {
-	        if(usetSet.addToSet(update)){
-	    		System.out.println(update);
-	            usetSet.inserInDB(update.getMessage().getChatId(), update.getMessage().getFrom().getId(),
-	                    update.getMessage().getFrom().getFirstName(), update.getMessage().getFrom().getLastName());
-	        }			
-		});
 		executorMessages.execute(() -> {
+			if (update.getMessage().getFrom().getBot()) {
+				// message sent by a bot.
+				System.err.println(update);
+				return;
+			}
+			// insert to database
+			executorDB.execute(() -> {
+		        if(usetSet.addToSet(update)){
+		    		System.out.println(update);
+		            usetSet.inserInDB(update.getMessage().getChatId(), update.getMessage().getFrom().getId(),
+		                    update.getMessage().getFrom().getFirstName(), update.getMessage().getFrom().getLastName());
+		        }			
+			});
 			if (update.hasMessage() && update.getMessage().hasText()) {
 				// Set variables
 				String message_text = update.getMessage().getText();
