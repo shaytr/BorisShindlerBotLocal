@@ -37,14 +37,14 @@ public class Actions {
     private final static String arnonaPayBillText = "goo.gl/48zE6D";
     private final static String arnonaDiscountText = "Кому положены скидки по арноне:\n" +
             " \n" +
-            "         1. Новым репатриантам\n" +
-            "         2. Пожилым людям, получающим пособие для пожилых людей\n" +
-            "         3. Людям с инвалидностью (в том числе и родителям детей-инвалидов)\n" +
-            "         4. Лицам, нуждающимся в постоянном уходе\n" +
-            "         5. Неполным семьям (матери-одиночки или отцы-одиночки)\n" +
-            "         6. Инвалидам ЦАХАЛа и солдатам срочной службы\n" +
-            "         7. Людям, пережившим Холокост, узникам Сиона\n" +
-            "         8. Лицам, получающим пособия по прожиточному минимуму\n" +
+            " • Новым репатриантам.\n" +
+            " • Пожилым людям, получающим пособие для пожилых людей.\n" +
+            " • Людям с инвалидностью (в том числе и родителям детей-инвалидов).\n" +
+            " • Лицам, нуждающимся в постоянном уходе.\n" +
+            " • Неполным семьям (матери-одиночки или отцы-одиночки).\n" +
+            " • Инвалидам ЦАХАЛа и солдатам срочной службы.\n" +
+            " • Людям, пережившим Холокост, узникам Сиона.\n" +
+            " • Лицам, получающим пособия по прожиточному минимуму.\n" +
             " \n" +
             "В том случае, если владелец не пользуется квартирой, он может получить \n" +
             "одноразовое освобождение от арноны (максимальный срок – 6 месяцев на одно\n" +
@@ -94,13 +94,13 @@ public class Actions {
             "или просто позвонив по номеру *106* и предоставив данные Вашей кредитной карты.\n" +
             "Еще один способ оплаты – online, на сайте муниципалитета\n" +
             "\nhttps://www5.tel-aviv.gov.il/tlv4u/parking/Reports/Default.aspx";
-    private final static String parkingFineCancelText = "Обжалование штрафа \n" +
-            "         Штраф можно обжаловать в случаях,\n" +
-            "         когда возможно подтвердить следующие ситуации:\n" +
-            "         •  штраф был выписан несправедливо;\n" +
-            "         •  Вы можете доказать, что не нарушали правил парковки Израиля;\n" +
-            "         •  есть доказательства медицинской или иной чрезвычайной ситуации.\n" +
-            "         В таких случаях Вы можете представить доказательства в отделе парковки муниципалитета.\n" +
+    private final static String parkingFineCancelText =
+            "Штраф можно обжаловать в случаях," +
+            "когда возможно подтвердить следующие ситуации:\n" +
+            " • Штраф был выписан несправедливо.\n" +
+            " • Вы можете доказать, что не нарушали правил парковки Израиля.\n" +
+            " • Есть доказательства медицинской или иной чрезвычайной ситуации.\n" +
+            "В таких случаях Вы можете представить доказательства в отделе парковки муниципалитета.\n" +
             "\nhttps://www5.tel-aviv.gov.il/TlvForms/Parking/tlvObjectionReport/Default.aspx";
 
     private final static String waterText = "Вода в Израиле находится в распоряжении «водных концернов» («таагидей маим»),\n" +
@@ -188,9 +188,9 @@ public class Actions {
 		/**/Utils.addAction("Kомпания Железные дороги Израиля", Actions::genericAction, railLinkText, "транспорт", true);
 		Utils.addAction("учеба", Actions::genericAction, TODO_TEXT, "главное меню", false);
 		Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "главное меню", false);
-		/**/Utils.addAction("получит разрешение на парковку", Actions::genericAction, parkingApprovalText, "Разрешение на парковку", true);
-		/**/Utils.addAction("заплатит штраф", Actions::genericAction, parkingFineText, "Разрешение на парковку", true);
-		/**/Utils.addAction("отменит штраф", Actions::genericAction, parkingFineCancelText, "Разрешение на парковку", true);	
+		/**/Utils.addAction("получить разрешение на парковку", Actions::genericAction, parkingApprovalText, "Разрешение на парковку", true);
+		/**/Utils.addAction("заплатить штраф", Actions::genericAction, parkingFineText, "Разрешение на парковку", true);
+		/**/Utils.addAction("отменить штраф", Actions::genericAction, parkingFineCancelText, "Разрешение на парковку", true);	
 		Utils.addAction("здоровье", Actions::genericAction, TODO_TEXT, "главное меню", false);
 		Utils.addAction("документы", Actions::genericAction, null, "главное меню", false);
 		
@@ -250,8 +250,8 @@ public class Actions {
 
     public static Object parking(Message m) {
         String[][] rows = new String[][]{
-                {"получит разрешение на парковку"},
-                {"заплатит штраф", "отменит штраф"}
+                {"получить разрешение на парковку"},
+                {"заплатить штраф", "отменить штраф"}
         };
         SendMessage message = Utils.createSendMessage(m, rows);
         return message;
