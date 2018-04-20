@@ -12,7 +12,7 @@ import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import BorisShindlerBot.BorisShindlerBot.Actions.Action;
 
 public class Utils {
-	private static String BACK_WORD = "назад";
+	private final static String BACK_WORD = "назад";
 	public static void addBackButton(List<KeyboardRow> keyboard, String command) {
 		KeyboardRow row = new KeyboardRow();
 		row.add(BACK_WORD + " (" + command + ")");

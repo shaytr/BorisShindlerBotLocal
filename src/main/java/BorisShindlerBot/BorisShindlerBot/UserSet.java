@@ -12,17 +12,17 @@ public class UserSet {
     private Connection conn;
     // create the java statement
     private Statement st;
-    private String url = "jdbc:mysql://localhost:3306/boris_shindler";
+    private final String url = "jdbc:mysql://localhost:3306/boris_shindler";
     //private String myDriver = "org.gjt.mm.mysql.Driver";
-    private String myDriver = "com.mysql.jdbc.Driver";
+    private final String myDriver = "com.mysql.jdbc.Driver";
     //
-    private String username = "root";
-    private Set<String> chatIds = new HashSet<>();
+    private final String username = "root";
+    private final Set<String> chatIds = new HashSet<>();
     // the mysql insert statement
-    private String queryInput = " insert into users (chat_id, user_id, first_name, last_name)"
+    private final String queryInput = " insert into users (chat_id, user_id, first_name, last_name)"
             + " values (?, ?, ?, ?)";
     // our SQL SELECT query.
-    private String querySelect = "SELECT chat_id FROM users";
+    private final String querySelect = "SELECT chat_id FROM users";
 
     public void setConnection(String password) {
 
@@ -79,10 +79,6 @@ public class UserSet {
 
     public Set<String> getChatIds() {
         return chatIds;
-    }
-
-    public void setChatIds(Set<String> chatIds) {
-        this.chatIds = chatIds;
     }
 
 }
