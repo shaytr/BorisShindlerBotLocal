@@ -12,7 +12,7 @@ public class UserSet {
     private Connection conn;
     // create the java statement
     private Statement st;
-    private final String url = "jdbc:mysql://localhost:3306/boris_shindler";
+    private final String url = "jdbc:mysql://localhost:3306/boris_shindler?autoReconnect=true";
     //private String myDriver = "org.gjt.mm.mysql.Driver";
     private final String myDriver = "com.mysql.jdbc.Driver";
     //
@@ -49,7 +49,8 @@ public class UserSet {
             // execute the preparedstatement
             preparedStmt.execute();
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
+        	chatIds.remove(Long.toString(chatId));
             e.printStackTrace();
         }
     }
