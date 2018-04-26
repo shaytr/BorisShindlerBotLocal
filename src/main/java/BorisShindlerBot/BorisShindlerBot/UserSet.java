@@ -51,6 +51,7 @@ public class UserSet {
 
         } catch (Exception e) {
         	chatIds.remove(Long.toString(chatId));
+        	System.err.println("inserInDB failed for chatId: " + chatId + " Exception: " + e.getStackTrace());
             e.printStackTrace();
         }
     }

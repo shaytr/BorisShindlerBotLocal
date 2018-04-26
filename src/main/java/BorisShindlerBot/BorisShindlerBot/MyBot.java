@@ -31,6 +31,13 @@ public class MyBot extends TelegramLongPollingBot {
 	public String getBotToken() {
 		return token;
 	}
+	
+	private String stringIfNull(String s) {
+		if (s == null) {
+			return "null";
+		}
+		return s;
+	}
 
 	@SuppressWarnings("unchecked")
 	public void onUpdateReceived(Update update) {
@@ -44,8 +51,12 @@ public class MyBot extends TelegramLongPollingBot {
 			executorDB.execute(() -> {
 		        if(usetSet.addToSet(update)){
 		    		System.out.println(update);
-		            usetSet.inserInDB(update.getMessage().getChatId(), update.getMessage().getFrom().getId(),
-		                    update.getMessage().getFrom().getFirstName(), update.getMessage().getFrom().getLastName());
+		            String firstName = stringIfNull(update.getMessage().getFrom().getFirstName());
+					String userName = stringIfNull(update.getMessage().getFrom().getUserName());
+					String lastName = stringIfNull(update.getMessage().getFrom().getLastName());
+					lastName = lastName + " (" + userName + ")";
+					usetSet.inserInDB(update.getMessage().getChatId(), update.getMessage().getFrom().getId(),
+		                    firstName, lastName);
 		        }			
 			});
 			if (update.hasMessage() && update.getMessage().hasText()) {
