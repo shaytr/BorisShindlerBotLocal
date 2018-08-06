@@ -14,20 +14,20 @@ public class Actions {
 
     private final static String transportationText =
             "В Тель-Авиве развита сеть общественного транспорта. Сеть представлена " +
-            "автобусами, микроавтобусами шэрут и поездами. Наиболее комфортным и \n" +
-            "быстрым видом транспорта являются поезда, самым дешевым – городские\n" +
-            "автобусы и маршрутки шэрут.\n\n\n" +
-            "Проездной Rav Kav*+ \n" +
-            "Rav Kav* – это персональная электронная карта, которую можно пополнить\n" +
-            "нужным количеством средств, на ж/д станциях и использовать для поездок на\n" +
-            "поездах или автобусах на территории всего государства Израиль.\n" +
-            "Автобусные маршруты в Израиле обслуживают разные компании.\n" +
-            "Если вы планируете поездки с разными перевозчиками,\n" +
-            "необходимо заплатить за проезд отдельно в каждой компании.\n" +
-            "Цены на билеты в автобусах Тель-Авива и ближайших городов\n" +
-            "(Тель-Авив и Центральный округ) объединяются в агломерацию Гуш-Дан, в\n" +
-            "которой действует единая система оплаты проезда в автобусах\n" +
-            "компаний *Dan*, *Egged*, *Kavim* ,*Metropoline* и поездах.\n";
+                    "автобусами, микроавтобусами шэрут и поездами. Наиболее комфортным и \n" +
+                    "быстрым видом транспорта являются поезда, самым дешевым – городские\n" +
+                    "автобусы и маршрутки шэрут.\n\n\n" +
+                    "Проездной Rav Kav*+ \n" +
+                    "Rav Kav* – это персональная электронная карта, которую можно пополнить\n" +
+                    "нужным количеством средств, на ж/д станциях и использовать для поездок на\n" +
+                    "поездах или автобусах на территории всего государства Израиль.\n" +
+                    "Автобусные маршруты в Израиле обслуживают разные компании.\n" +
+                    "Если вы планируете поездки с разными перевозчиками,\n" +
+                    "необходимо заплатить за проезд отдельно в каждой компании.\n" +
+                    "Цены на билеты в автобусах Тель-Авива и ближайших городов\n" +
+                    "(Тель-Авив и Центральный округ) объединяются в агломерацию Гуш-Дан, в\n" +
+                    "которой действует единая система оплаты проезда в автобусах\n" +
+                    "компаний *Dan*, *Egged*, *Kavim* ,*Metropoline* и поездах.\n";
     private final static String electricityText = "Электроэнергетическая компания Израиля вырабатывает," +
             " поставляет и распределяет практически всё электричество,\n" +
             "потребляемое в стране. Государству Израиль принадлежат 99,85% компании.\n" +
@@ -96,12 +96,12 @@ public class Actions {
             "\nhttps://www5.tel-aviv.gov.il/tlv4u/parking/Reports/Default.aspx";
     private final static String parkingFineCancelText =
             "Штраф можно обжаловать в случаях," +
-            "когда возможно подтвердить следующие ситуации:\n" +
-            " • Штраф был выписан несправедливо.\n" +
-            " • Вы можете доказать, что не нарушали правил парковки Израиля.\n" +
-            " • Есть доказательства медицинской или иной чрезвычайной ситуации.\n" +
-            "В таких случаях Вы можете представить доказательства в отделе парковки муниципалитета.\n" +
-            "\nhttps://www5.tel-aviv.gov.il/TlvForms/Parking/tlvObjectionReport/Default.aspx";
+                    "когда возможно подтвердить следующие ситуации:\n" +
+                    " • Штраф был выписан несправедливо.\n" +
+                    " • Вы можете доказать, что не нарушали правил парковки Израиля.\n" +
+                    " • Есть доказательства медицинской или иной чрезвычайной ситуации.\n" +
+                    "В таких случаях Вы можете представить доказательства в отделе парковки муниципалитета.\n" +
+                    "\nhttps://www5.tel-aviv.gov.il/TlvForms/Parking/tlvObjectionReport/Default.aspx";
 
     private final static String waterText = "Вода в Израиле находится в распоряжении «водных концернов» («таагидей маим»),\n" +
             "у каждого муниципалитета есть свой концерн.\n" +
@@ -128,10 +128,11 @@ public class Actions {
             "Буду рад услышать Ваши пожелания на моей официальной странице в Фейсбуке!\n" +
             "Подписывайтесь на мой официальный Телеграм-канал :)_\n";
 
-    final static String[][] THE_END_MENU = {{"оставить пожелания", "страница ФБ Бориса Шиндлера"}, {"основной канал Бориса Шиндлера", "вернуться в главное меню"}};
+    final static String[][] THE_END_MENU = {{"Оставить пожелания", "Страница ФБ Бориса Шиндлера"}, {"Основной канал Бориса Шиндлера", "Вернуться в главное меню"}};
     private final static String contactMail = "infoshindler@gmail.com";
     private final static String shindlerChannelText = "https://t.me/tlv2018";
-    private final static String shindlerFBText = "https://www.facebook.com/ListOfShindler/";
+    private final static String shindlerFBText = "fb://profile/898906540272648";
+    private final static String shindlerSite = "http://shindler.co.il";
 
     private final static String pleaseEnterMailText = "пожалуйста введите адрес электронной почты:";
     private final static String mailSentTextText = "отправлено";
@@ -150,6 +151,30 @@ public class Actions {
     private final static String mosqitoText = "При муниципалитете существует специальное отделение, которое занимается уничтожением комаров и других вредителей.\n" +
             "Если возле Вашего дома расположен открытый источник воды, Вы можете обратиться по телефону *106* для устранения нежелательных насекомых.\n";
     private final static String TODO_TEXT = "*в разработке...*";
+    private final static String ABOUT_BOT = "Борис Шиндлер\n" +
+            "Кандидат в депутаты горсовета Тель-Авива 30/10/2018\n" +
+            "В Тель-Авиве проживает около 50 000 русскоязычных жителей, и у многих из них есть проблемы, которые можно было бы решить на уровне городского совета.\n" +
+            "На муниципальных выборах избирается мэр города (прямым тайным голосованием) и городской совет, члены которого избираются по партийным спискам (не только общеизральских партий, но и местных городских политических объединений). \n" +
+            "социальный стартапер, инициатор социальных проектов с 15-летним опытом работы в сфере развития общественных некоммерческих организаций. Основная специализация – инициация и управление социальными и общественно-просветительскими проектами \n" +
+            "Дата рождения 1981г. \n" +
+            "Место рождения – Кривой Рог, СССР (Украина) \n" +
+            "Дата репатриации 1990г. \n" +
+            "Место проживания – Флорентин, Тель-Авив \n" +
+            "Образование: Семинар Хакибуцим, бакалавр по педагогике \n" +
+            "Лицензия педагога от Министерства образования Израиля \n" +
+            "Специализация: литература и ТаНаХ \n" +
+            "В 2015 газета Едиот Ахронот включила Бориса Шиндлера в ТОП-50 социальных «ангелов» Израиля \n" +
+            "2017 — 2018 – координатор партии НДИ в Тель-Авиве \n" +
+            "2016 — 2018 – финансовый и административный директор в \"Topaz\" – ведущей некоммерческой организации, поддерживающей инновации в социальном предпринимательстве \n" +
+            "С 2015 – соучредитель, член правления, глава русскоязычного штаба и исследовательского центра движения по защите прав частных предпринимателей. \n" +
+            "С 2015 – Соучредитель лобби по продвижению «полуторного поколения» молодых русскоязычных израильтян \n" +
+            "2014 — 2016 Управляющий финансами и международными проектами в сообществе молодых русскоязычных Израильтян «Фишка». \n" +
+            "2013 — 2015 – соучредитель общественной организации «OneDay Social Volunteering», занимающейся привлечением молодежи в волонтерские проекты. \n" +
+            "2009 — 2012 – менеджер по обучению и квалификации отдела по связям Бюро по связям «Натив» при канцелярии премьер-министра \n" +
+            "2010 — 2014 – член оргкомитета «Лимуд» \n" +
+            "Узнать более подробную информацию о Борисе Шиндлере и его проектах, а так же оставить отзывы и предложения, можно на официальных каналах Боримса Шиндлера\n" +
+            shindlerSite + "\nсайт Бориса Шиндлера \n";
+
 
     final static HashMap<String, Action> actionsMap = new HashMap<>();
     final static HashMap<String, String> textsMap = new HashMap<>();
@@ -162,43 +187,68 @@ public class Actions {
 
 
     static {
-		Utils.addAction("арнона", Actions::arnona, arnonaText, "главное меню", false);
-		/**/Utils.addAction("изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText, "арнона", false);
-		/**//**/Utils.addAction("получить форму на e-mail", Actions::genericAction, pleaseEnterMailText, "изменить домашний адрес", false);
-		/**//**//**/Utils.addAction("@", Actions::sendMail, mailSentTextText, "изменить домашний адрес", true);
-		/**//**/Utils.addAction("показать форму на экране", Actions::arnonaChangeAdressSendFile, null, "изменить домашний адрес", true);
-		/**//**/Utils.addAction("подать форму online", Actions::genericAction, arnonaChnangeAdressOnLineText, "изменить домашний адрес", true);
-		/**/Utils.addAction("оплатить", Actions::genericAction, arnonaPayBillText, "арнона", true);
-		/**/Utils.addAction("льготы", Actions::arnonaDiscount, arnonaDiscountText, "арнона", false);
-		/**//**/Utils.addAction("Подать просьбу на скидку online", Actions::genericAction, arnonaDiscountApealOnLineText, "льготы", true);
-		Utils.addAction("жилье", Actions::appartment, null, "главное меню", false);
-		/**/Utils.addAction("вода", Actions::water, waterText, "жилье", false);
-		/**//**/Utils.addAction("Декларация количества людей online", Actions::genericAction, waterNumPplDeclarationText, "вода", true);
-		/**//**/Utils.addAction("Оплатить счет воды", Actions::genericAction, waterPayText, "вода", true);
-		/**/Utils.addAction("уличная канализация", Actions::suige, suigeText, "жилье", false);
-		/**//**/Utils.addAction("Обращение online о проблемах канализации", Actions::genericAction, suigeOnLineText, "уличная канализация", true);
-		/**/Utils.addAction("комары", Actions::genericAction, mosqitoText, "жилье", true);
-		/**/Utils.addAction("мусор", Actions::genericAction, garbageText, "жилье", true);
-		/**/Utils.addAction("электричество", Actions::electricity, electricityText, "жилье", false);
-		/**//**/Utils.addAction("Оплата электричества", Actions::genericAction, electricityPayText, "электричество", true);
-		/**/Utils.addAction("газ", Actions::genericAction, gazText, "жилье", true);
-		Utils.addAction("транспорт", Actions::transportation, transportationText, "главное меню", false);
-		/**/Utils.addAction("Kомпания Дан", Actions::genericAction, danLinkText, "транспорт", true);
-		/**/Utils.addAction("Кооператив Эгед", Actions::genericAction, eggedLinkText, "транспорт", true);
-		/**/Utils.addAction("Kомпания Железные дороги Израиля", Actions::genericAction, railLinkText, "транспорт", true);
-		Utils.addAction("учеба", Actions::genericAction, TODO_TEXT, "главное меню", false);
-		Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "главное меню", false);
-		/**/Utils.addAction("получить разрешение на парковку", Actions::genericAction, parkingApprovalText, "Разрешение на парковку", true);
-		/**/Utils.addAction("заплатить штраф", Actions::genericAction, parkingFineText, "Разрешение на парковку", true);
-		/**/Utils.addAction("отменить штраф", Actions::genericAction, parkingFineCancelText, "Разрешение на парковку", true);	
-		Utils.addAction("здоровье", Actions::genericAction, TODO_TEXT, "главное меню", false);
-		Utils.addAction("документы", Actions::genericAction, null, "главное меню", false);
-		
-		Utils.addAction("оставить пожелания", Actions::genericAction, contactMail, "главное меню", false);
-		Utils.addAction("основной канал Бориса Шиндлера", Actions::genericAction, shindlerChannelText, "главное меню", false);
-		Utils.addAction("страница ФБ Бориса Шиндлера", Actions::genericAction, shindlerFBText, "главное меню", false);
+        Utils.addAction("Арнона", Actions::arnona, arnonaText, "Главное меню", false);
+        /**/
+        Utils.addAction("Изменить домашний адрес", Actions::arnonaChangeAdress, arnonaChnangeAdressText, "Арнона", false);
+        /**//**/
+        Utils.addAction("Получить форму на e-mail", Actions::genericAction, pleaseEnterMailText, "Изменить домашний адрес", false);
+        /**//**//**/
+        Utils.addAction("@", Actions::sendMail, mailSentTextText, "Изменить домашний адрес", true);
+        /**//**/
+        Utils.addAction("Показать форму на экране", Actions::arnonaChangeAdressSendFile, null, "Изменить домашний адрес", true);
+        /**//**/
+        Utils.addAction("Подать форму online", Actions::genericAction, arnonaChnangeAdressOnLineText, "Изменить домашний адрес", true);
+        /**/
+        Utils.addAction("Оплатить", Actions::genericAction, arnonaPayBillText, "Арнона", true);
+        /**/
+        Utils.addAction("Льготы", Actions::arnonaDiscount, arnonaDiscountText, "Арнона", false);
+        /**//**/
+        Utils.addAction("Подать просьбу на скидку online", Actions::genericAction, arnonaDiscountApealOnLineText, "Льготы", true);
+        Utils.addAction("Жилье", Actions::appartment, null, "Главное меню", false);
+        /**/
+        Utils.addAction("Вода", Actions::water, waterText, "Жилье", false);
+        /**//**/
+        Utils.addAction("Декларация количества людей online", Actions::genericAction, waterNumPplDeclarationText, "Вода", true);
+        /**//**/
+        Utils.addAction("Оплатить счет воды", Actions::genericAction, waterPayText, "Вода", true);
+        /**/
+        Utils.addAction("Уличная канализация", Actions::suige, suigeText, "Жилье", false);
+        /**//**/
+        Utils.addAction("Обращение online о проблемах канализации", Actions::genericAction, suigeOnLineText, "Уличная канализация", true);
+        /**/
+        Utils.addAction("Комары", Actions::genericAction, mosqitoText, "Жилье", true);
+        /**/
+        Utils.addAction("Мусор", Actions::genericAction, garbageText, "Жилье", true);
+        /**/
+        Utils.addAction("Электричество", Actions::electricity, electricityText, "Жилье", false);
+        /**//**/
+        Utils.addAction("Оплата электричества", Actions::genericAction, electricityPayText, "Электричество", true);
+        /**/
+        Utils.addAction("Газ", Actions::genericAction, gazText, "Жилье", true);
+        Utils.addAction("Транспорт", Actions::transportation, transportationText, "Главное меню", false);
+        /**/
+        Utils.addAction("Kомпания Дан", Actions::genericAction, danLinkText, "Транспорт", true);
+        /**/
+        Utils.addAction("Кооператив Эгед", Actions::genericAction, eggedLinkText, "Транспорт", true);
+        /**/
+        Utils.addAction("Kомпания Железные дороги Израиля", Actions::genericAction, railLinkText, "Транспорт", true);
+        Utils.addAction("Учеба", Actions::genericAction, TODO_TEXT, "Главное меню", false);
+        Utils.addAction("Разрешение на парковку", Actions::parking, parkingText, "Главное меню", false);
+        /**/
+        Utils.addAction("Получить разрешение на парковку", Actions::genericAction, parkingApprovalText, "Разрешение на парковку", true);
+        /**/
+        Utils.addAction("Заплатить штраф", Actions::genericAction, parkingFineText, "Разрешение на парковку", true);
+        /**/
+        Utils.addAction("Отменить штраф", Actions::genericAction, parkingFineCancelText, "Разрешение на парковку", true);
+        Utils.addAction("Здоровье", Actions::genericAction, TODO_TEXT, "Главное меню", false);
+        Utils.addAction("Документы", Actions::genericAction, null, "Главное меню", false);
+        Utils.addAction("О Боте", Actions::genericAction, ABOUT_BOT, "Главное меню", true);
 
-	}
+        Utils.addAction("Оставить пожелания", Actions::genericAction, contactMail, "Главное меню", false);
+        Utils.addAction("Основной канал Бориса Шиндлера", Actions::genericAction, shindlerChannelText, "Главное меню", false);
+        Utils.addAction("Страница ФБ Бориса Шиндлера", Actions::genericAction, shindlerFBText, "Главное меню", false);
+
+    }
 
     public static Object getAction(String command, Message message) {
         Action action = actionsMap.get(command);
@@ -210,8 +260,8 @@ public class Actions {
 
     public static Object appartment(Message m) {
         String[][] rows = new String[][]{
-                {"вода", "газ", "мусор", "комары"},
-                {"уличная канализация", "электричество"}
+                {"Вода", "Газ", "Мусор", "Комары"},
+                {"Уличная канализация", "Электричество"}
         };
         SendMessage message = Utils.createSendMessage(m, rows);
         return message;
@@ -231,6 +281,12 @@ public class Actions {
         SendMessage message = Utils.createSendMessage(m);
         return message;
     }
+    
+    public static Object aboutBot(Message m) {
+        SendMessage message = Utils.createSendMessage(m);
+        message.enableHtml(true);
+        return message;
+    }
 
     public static Object electricity(Message m) {
         String[][] rows = new String[][]{
@@ -242,7 +298,7 @@ public class Actions {
 
     public static Object arnonaDiscount(Message m) {
         String[][] rows = new String[][]{
-			{"Подать просьбу на скидку online"}
+                {"Подать просьбу на скидку online"}
         };
         SendMessage message = Utils.createSendMessage(m, rows);
         return message;
@@ -250,8 +306,8 @@ public class Actions {
 
     public static Object parking(Message m) {
         String[][] rows = new String[][]{
-                {"получить разрешение на парковку"},
-                {"заплатить штраф", "отменить штраф"}
+                {"Получить разрешение на парковку"},
+                {"Заплатить штраф", "Отменить штраф"}
         };
         SendMessage message = Utils.createSendMessage(m, rows);
         return message;
@@ -269,8 +325,8 @@ public class Actions {
     public static Object arnona(Message m) {
 
         String[][] rows = new String[][]{
-                {"изменить домашний адрес"},
-                {"оплатить", "льготы"}
+                {"Изменить домашний адрес"},
+                {"Оплатить", "Льготы"}
         };
         SendMessage message = Utils.createSendMessage(m, rows);
         return message;
@@ -287,8 +343,8 @@ public class Actions {
     public static Object arnonaChangeAdress(Message m) {
 
         String[][] rows = new String[][]{
-			{"получить форму на e-mail", "подать форму online"},
-                {"показать форму на экране"}
+                {"Получить форму на e-mail", "Подать форму online"},
+                {"Показать форму на экране"}
         };
         SendMessage message = Utils.createSendMessage(m, rows);
         return message;
